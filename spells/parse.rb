@@ -110,8 +110,6 @@ csv_spells.each_with_index do |spell_data, index|
       wizard: spell_data[:wiz]
     }
   }
-  require 'pry'
-  binding.pry
 
   # May want to write a JSON of each spell under each class
   # {'sorcerer': [16, 21, 1112...], 'wizard': [23, 121, 636, 2200...]}
