@@ -75,7 +75,7 @@ csv_spells.each_with_index do |spell_data, index|
     saving_throw: spell_data[:saving_throw],
     dismissible: Seeds.boolean_check(spell_data[:dismissible]),
     description: Seeds.sanitize_speech(spell_data[:description]),
-    description_short: Seeds.sanitize_speech(spell_data[:short_description]),
+    description_short: spell_data[:short_description],
     source: spell_data[:source],
     spell_requirements: {
       verbal:   Seeds.boolean_check(spell_data[:verbal]),
@@ -125,3 +125,5 @@ csv_spells.each_with_index do |spell_data, index|
   end
 
 end
+
+puts "JSONs complete"
