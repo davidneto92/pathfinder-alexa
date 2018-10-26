@@ -6,7 +6,7 @@ This skill is meant to provide quick information on the spells found in the Path
 
 Building the spells db
 
-- parse spells csv into jsons
+- ~~parse spells csv into jsons~~
 - deploy spells to a dynamo table
 - create script to pull a .csv from the spells google sheet
 - sanitize strings
