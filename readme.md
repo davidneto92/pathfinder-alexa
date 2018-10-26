@@ -1,10 +1,16 @@
-# Tasks
+# Pathfinder Alexa skill
+
+This skill is meant to provide quick information on the spells found in the Pathfinder roleplaying game.
+
+## Tasks
 
 Building the spells db
 
 - parse spells csv into jsons
 - deploy spells to a dynamo table
 - create script to pull a .csv from the spells google sheet
+- sanitize strings
+    - remove any &, correct transcoding errors
 
 Building the skill
 

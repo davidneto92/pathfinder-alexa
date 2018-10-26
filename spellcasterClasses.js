@@ -1,4 +1,4 @@
-const spellcaster_classes = [
+const spellcasterClasses = [
   'alchemist',
   'antipaladin',
   'bard',
@@ -25,4 +25,4 @@ const spellcaster_classes = [
   'wizard'
 ];
 
-module.exports = spellcaster_classes;
+module.exports = spellcasterClasses;
