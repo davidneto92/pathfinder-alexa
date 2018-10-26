@@ -1,1 +1,0 @@
-// this script will be used to parse the CSV into json objects to load into dynamo
