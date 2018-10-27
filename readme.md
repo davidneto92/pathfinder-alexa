@@ -8,9 +8,8 @@ Building the spells db
 
 - ~~parse spells csv into jsons~~
 - deploy spells to a dynamo table
-- create script to pull a .csv from the spells google sheet
 - sanitize strings
-    - remove any &, correct transcoding errors
+  - remove any ampersands and correct transcoding errors
 
 Building the skill
 
