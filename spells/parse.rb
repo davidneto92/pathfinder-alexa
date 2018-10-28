@@ -116,7 +116,6 @@ csv_spells.each_with_index do |spell_data, index|
 
   # PATHFINDER_CLASSES.each do |pathfinder_class|
   #   if Seeds.null_check(spell_data, pathfinder_class.to_sym)
-      
   #   end
   # end
 
@@ -126,4 +125,4 @@ csv_spells.each_with_index do |spell_data, index|
 
 end
 
-puts "JSONs complete"
+puts "JSONs written to /output_spells"

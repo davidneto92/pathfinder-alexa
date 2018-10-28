@@ -4,3 +4,4 @@ node_modules/
 *.csv
 alexaSkill/.ask/config
 output_spells/
+.nyc_output/
