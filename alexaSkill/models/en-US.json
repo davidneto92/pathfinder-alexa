@@ -22,17 +22,6 @@
                     "samples": [
 
                     ]
-                },
-                {
-                    "name": "HelloWorldIntent",
-                    "slots": [
-
-                    ],
-                    "samples": [
-                        "hello",
-                        "say hello",
-                        "say hello world"
-                    ]
                 }
             ]
         }
