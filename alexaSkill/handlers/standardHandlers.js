@@ -1,18 +1,14 @@
-// CancelAndStop, SessionEndedRequest, ErrorHandler, Help
-
-const _ = require("lodash")
-
 const LaunchIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
     },
     handle(handlerInput) {
         const speechText = "Welcome to the Pathfinder Spell companion. I provide information on the many arcane abilities found in Golarion. What spell would you like to hear about?"
-        const reprompt = "Ask me about a spell, or I'll whip your ass."
+        const reprompt = "Ask me about a spell, or I'll whip your butt."
         return handlerInput.responseBuilder
-                .speak(speechText)
-                .reprompt(reprompt)
-                .getResponse();
+            .speak(speechText)
+            .reprompt(reprompt)
+            .getResponse();
     }
 };
 
