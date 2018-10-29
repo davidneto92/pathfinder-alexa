@@ -24,14 +24,10 @@
                     ]
                 },
                 {
-                    "name": "HelloWorldIntent",
-                    "slots": [
-
-                    ],
+                    "name": "SpellIntent",
                     "samples": [
-                        "hello",
-                        "say hello",
-                        "say hello world"
+                        "tell me about a spell",
+                        "spell"
                     ]
                 }
             ]
