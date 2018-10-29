@@ -1,3 +1,4 @@
+require 'pry'
 require "aws-sdk"
 
 Aws.config.update({
@@ -28,6 +29,7 @@ params = {
 
 begin
   result = dynamodb.get_item(params)
+  binding.pry
   printf "%i - %s\n%s\n%d\n", 
         result.item["year"],
         result.item["title"],

@@ -30,9 +30,9 @@ require 'fileutils'
 #   'wizard'
 # ].freeze
 
-spell_output = "output_spells"
+spell_output_folder = "output_spells"
 # class_spells = "output_class_spells"
-Dir.mkdir(spell_output) unless File.exists?(spell_output)
+Dir.mkdir(spell_output_folder) unless File.exists?(spell_output_folder)
 # Dir.mkdir(class_spells) unless File.exists?(class_spells)
 
 module Seeds
@@ -52,9 +52,9 @@ module Seeds
     string.gsub("&", "and").gsub("&#8224", "")
   end
 
-  def self.strip_html(string)
-    # string.gsub("/","_").gsub(" ","_")
-  end
+  # def self.strip_html(string)
+  #   string.gsub("/","_").gsub(" ","_")
+  # end
 
 end
 
@@ -119,7 +119,7 @@ csv_spells.each_with_index do |spell_data, index|
   #   end
   # end
 
-  File.open("#{spell_output}/#{index}.json","w") do |f|
+  File.open("#{spell_output_folder}/#{index + 1}.json","w") do |f|
     f.write(spell.to_json)
   end
 
