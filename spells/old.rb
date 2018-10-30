@@ -30,7 +30,7 @@ require 'fileutils'
 #   'wizard'
 # ].freeze
 
-spell_output_folder = "output_spells"
+spell_output_folder = "spells_output"
 # class_spells = "output_class_spells"
 Dir.mkdir(spell_output_folder) unless File.exists?(spell_output_folder)
 # Dir.mkdir(class_spells) unless File.exists?(class_spells)
@@ -51,18 +51,14 @@ module Seeds
   def self.sanitize_speech(string)
     string.gsub("&", "and").gsub("&#8224", "")
   end
-
-  # def self.strip_html(string)
-  #   string.gsub("/","_").gsub(" ","_")
-  # end
-
 end
 
 csv_spells = SmarterCSV.process('./input/spell_list.csv')
 puts "#{csv_spells.length} spells to be parsed"
 
+all_spells = []
 csv_spells.each_with_index do |spell_data, index|
-  spell = {
+  all_spells << {
     id: (index + 1),
     name: spell_data[:name].downcase,
     school: spell_data[:school],
@@ -110,19 +106,16 @@ csv_spells.each_with_index do |spell_data, index|
       wizard: spell_data[:wiz]
     }
   }
-
   # May want to write a JSON of each spell under each class
   # {'sorcerer': [16, 21, 1112...], 'wizard': [23, 121, 636, 2200...]}
-
   # PATHFINDER_CLASSES.each do |pathfinder_class|
   #   if Seeds.null_check(spell_data, pathfinder_class.to_sym)
   #   end
   # end
-
-  File.open("#{spell_output_folder}/#{index + 1}.json","w") do |f|
-    f.write(spell.to_json)
-  end
-
 end
 
-puts "JSONs written to /output_spells"
+File.open("#{spell_output_folder}/all_spells.json","w") do |f|
+  f.write(spell.to_json)
+end
+
+puts "JSONs written to /spells_output"

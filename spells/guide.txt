@@ -1,5 +1,0 @@
-ruby guide
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Ruby.03.html
-
-node guide
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.NodeJs.html
