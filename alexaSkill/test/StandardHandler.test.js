@@ -1,5 +1,6 @@
 const alexaTest = require("alexa-skill-test-framework");
 const TestUtils = require("./TestUtils");
+const languageStrings = require("../resources/languageStrings")
 TestUtils.Init();
 
 describe("SessionEndedRequest received, ", () => {
@@ -23,7 +24,7 @@ describe("User issues cancel or stop intent, ", () => {
     describe("should say goodbye and end session", () => {
         alexaTest.test([{
             request: alexaTest.getIntentRequest("AMAZON.CancelIntent"),
-            saysLike: "Come back soon, binch!",
+            saysLike: languageStrings.en.translation.GOODBYE,
             shouldEndSession: true
         }]);
     });
@@ -31,7 +32,7 @@ describe("User issues cancel or stop intent, ", () => {
     describe("should say goodbye and end session", () => {
         alexaTest.test([{
             request: alexaTest.getIntentRequest("AMAZON.StopIntent"),
-            saysLike: "Come back soon, binch!",
+            saysLike: languageStrings.en.translation.GOODBYE,
             shouldEndSession: true
         }]);
     });
@@ -41,7 +42,7 @@ describe("Help intent", () => {
     describe("should return relevant help dialog", () => {
         alexaTest.test([{
             request: alexaTest.getIntentRequest("AMAZON.HelpIntent"),
-            saysLike: "This skill tells you about spells. Now, ask me about one.",
+            saysLike: languageStrings.en.translation.HELP,
             shouldEndSession: false
         }]);
     });
@@ -51,7 +52,7 @@ describe("Fallback intent", () => {
     describe("should return relevant fallback dialog", () => {
         alexaTest.test([{
             request: alexaTest.getIntentRequest("AMAZON.FallbackIntent"),
-            says: "I'll be honest, that was a very dumb question.",
+            says: languageStrings.en.translation.FALLBACK,
             shouldEndSession: true
         }]);
     });
