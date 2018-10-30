@@ -1,5 +1,6 @@
 const Alexa = require('ask-sdk');
 
+const { LocalizationRequestInterceptor } = require("./interceptors/LocalizationRequestInterceptor")
 const {DebugRequestInterceptor} = require("./interceptors/DebugRequestInterceptor")
 const {DebugResponseInterceptor} = require("./interceptors/DebugResponseInterceptor")
 const standardHandlers = require("./handlers/standardHandlers")
@@ -20,6 +21,7 @@ exports.handler = skillBuilder
 		new DebugRequestInterceptor()
 	)
 	.addResponseInterceptors(
+		new LocalizationRequestInterceptor(),
 		new DebugResponseInterceptor()
 	)
 	.addErrorHandlers(standardHandlers.ErrorHandler)
