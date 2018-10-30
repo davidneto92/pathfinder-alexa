@@ -2,10 +2,13 @@ const Alexa = require('ask-sdk');
 const assert = require("chai").assert;
 const alexaTest = require("alexa-skill-test-framework");
 
+const { LocalizationRequestInterceptor } = require("../interceptors/LocalizationRequestInterceptor")
 const { DebugRequestInterceptor } = require("../interceptors/DebugRequestInterceptor")
 const { DebugResponseInterceptor } = require("../interceptors/DebugResponseInterceptor")
 const standardHandlers = require("../handlers/standardHandlers")
 const spellHandlers = require("../handlers/spellHandlers")
+
+const languageStrings = require("../resources/languageStrings")
 
 function Init() {
     const main = {
@@ -19,6 +22,7 @@ function Init() {
                 standardHandlers.FallbackHandler
             )
             .addRequestInterceptors(
+                new LocalizationRequestInterceptor(),
                 new DebugRequestInterceptor()
             )
             .addResponseInterceptors(
@@ -28,7 +32,7 @@ function Init() {
             .lambda()
     };
     alexaTest.initialize(main, "amzn1.ask.skill.this-is-mock-of-guid", "amzn1.ask.account.00000000000000420");
-    // alexaTest.initializeI18N(languageStrings);
+    alexaTest.initializeI18N(languageStrings);
     alexaTest.setLocale("en-US");
     alexaTest.setExtraFeature("questionMarkCheck", false);
 }

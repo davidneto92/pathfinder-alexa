@@ -3,23 +3,25 @@ const LaunchIntentHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
     },
     handle(handlerInput) {
-        const speechText = "Welcome to the Pathfinder Spell companion. I provide information on the many arcane abilities found in Golarion. What spell would you like to hear about?"
-        const reprompt = "Ask me about a spell, or I'll whip your butt."
+        const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
+        const speechText = requestAttributes.t("WELCOME")
+        const reprompt = requestAttributes.t("WELCOME_REPROMPT")
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(reprompt)
-            .getResponse();
+        .speak(speechText)
+        .reprompt(reprompt)
+        .getResponse();
     }
 };
 
 const CancelAndStopIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-                || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+        && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
+        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speechText = "Come back soon, binch!"
+        const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
+        const speechText = requestAttributes.t("GOODBYE")
         return handlerInput.responseBuilder
             .speak(speechText)
             .withShouldEndSession(true)
@@ -60,9 +62,9 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = "This skill tells you about spells. Now, ask me about one."
-        const reprompt = "Are you gonna ask me about a spell?"
-
+        const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
+        const speechText = requestAttributes.t("HELP")
+        const reprompt = requestAttributes.t("HELP_REPROMPT")
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(reprompt)
@@ -77,7 +79,8 @@ const FallbackHandler = {
             || true
     },
     handle(handlerInput) {
-        const speechText = "I'll be honest, that was a very dumb question."
+        const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
+        const speechText = requestAttributes.t("FALLBACK")
         return handlerInput.responseBuilder
             .speak(speechText)
             .withShouldEndSession(true)
