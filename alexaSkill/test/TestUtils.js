@@ -7,8 +7,10 @@ const { DebugRequestInterceptor } = require("../interceptors/DebugRequestInterce
 const { DebugResponseInterceptor } = require("../interceptors/DebugResponseInterceptor")
 const standardHandlers = require("../handlers/standardHandlers")
 const spellHandlers = require("../handlers/spellHandlers")
-
 const languageStrings = require("../resources/languageStrings")
+
+let AWS = require('aws-sdk');
+AWS.config.update( {region:'us-east-1'} );
 
 function Init() {
     const main = {
@@ -23,7 +25,7 @@ function Init() {
             )
             .addRequestInterceptors(
                 new LocalizationRequestInterceptor(),
-                new DebugRequestInterceptor()
+                // new DebugRequestInterceptor()
             )
             .addResponseInterceptors(
                 new DebugResponseInterceptor()
