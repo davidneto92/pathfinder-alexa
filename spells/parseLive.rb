@@ -1,10 +1,11 @@
-# parse CSV, delete previous table, create table, load data
+# FOR LIVE DYNAMODB
+
+# parse CSV, load all data
 require "aws-sdk"
 require "smarter_csv"
 
 Aws.config.update({
-  region: "us-west-2",
-  endpoint: "http://localhost:8000"
+  region: "us-east-1",
 })
 
 table_name = 'pathfinderSpellsTable'
@@ -86,51 +87,6 @@ csv_spells.each_with_index do |spell_data, index|
 end
 
 
-# DELETE -------------------------------------------------------------------- #
-delete_params = {
-  table_name: table_name
-}
-
-begin
-  result = dynamodb.delete_table(delete_params)
-  puts "Deleted table."
-
-rescue  Aws::DynamoDB::Errors::ServiceError => error
-  puts "Unable to delete table:"
-  puts "#{error.message}"
-end
-
-
-# CREATE -------------------------------------------------------------------- #
-create_params = {
-	table_name: table_name,
-	key_schema: [
-		{
-			attribute_name: "id",
-			key_type: "HASH"  #Partition key
-		}
-	],
-	attribute_definitions: [
-		{
-			attribute_name: "id",
-			attribute_type: "N"
-		}
-	],
-	provisioned_throughput: { 
-		read_capacity_units: 10,
-		write_capacity_units: 10
-	}
-}
-
-begin
-  result = dynamodb.create_table(create_params)
-  puts "Created the dang table. Status: " + result.table_description.table_status
-rescue Aws::DynamoDB::Errors::ServiceError => error
-  puts "Unable to create table:"
-  puts "#{error.message}"
-end
-
-
 # LOAD -------------------------------------------------------------------- #
 files = Dir.entries('output_spells')
 
@@ -147,24 +103,4 @@ all_spells.each do |spell|
     puts "Unable to add spell:"
     puts "#{error.message}"
   end
-end
-
-
-# TEST QUERY ---------------------------------------------------------------- #
-query_params = {
-  table_name: table_name,
-  key: {
-    id: 23
-  }
-}
-
-begin
-  result = dynamodb.get_item(params)
-  printf "%i - %s\n%s\n%d\n", 
-        result.item["name"],
-        result.item["school"],
-        result.item["description_short"],
-rescue  Aws::DynamoDB::Errors::ServiceError => error
-  puts "Unable to read item:"
-  puts "#{error.message}"
 end

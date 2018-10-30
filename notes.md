@@ -7,7 +7,8 @@ This skill is meant to provide quick information on the spells found in the Path
 Building the spells db
 
 - ~~parse spells csv into jsons~~
-- deploy spells to a dynamo table
+- ~~deploy spells to a local dynamo table~~
+- deploy spells to a live dynamo table
 - sanitize strings
   - remove any ampersands and correct transcoding errors
 
