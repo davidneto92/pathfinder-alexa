@@ -4,18 +4,23 @@ This skill is meant to provide quick information on the spells found in the Path
 
 ## Tasks
 
-Building the spells db
+Building the spells table
 
-- ~~parse spells csv into jsons~~
-- deploy spells to a dynamo table
-- sanitize strings
+- ~~parse spells csv~~
+- ~~deploy spells to a local dynamo table~~
+- ~~deploy spells to a live dynamo table~~
+- sanitize strings & spell names
   - remove any ampersands and correct transcoding errors
+  - remove `/`, `-` from spell names and adjust table entries
+  - change names from `arcane sight, greater` --> `greater arcane sight`
+  - add synonyms
 
 Building the skill
 
-- initialiize unit tests
+- ~~initialiize unit tests~~
 - launch requests
 - standard intents
+- ~~localize language strings~~
 - select spell
 - spell data + slots
 
