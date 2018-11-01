@@ -1,8 +1,6 @@
 var AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
-var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
-
 
 const SpellIntentHandler = {
     canHandle(handlerInput) {
@@ -14,7 +12,7 @@ const SpellIntentHandler = {
             params = {
                 TableName: "pathfinderSpellsTable",
                 Key: {
-                    "id": 23
+                    "name": "acid arrow"
                 }
             };
 
@@ -24,7 +22,7 @@ const SpellIntentHandler = {
                 } else {
                     if (data.Item) {
                         return resolve(handlerInput.responseBuilder
-                            .speak(`Your spell is ${data.Item.name}`)
+                            .speak(`Your spell is ${data.Item.name}, and it does this: ${data.Item.description_short}`)
                             .withShouldEndSession(true)
                             .getResponse());
                     } else {

@@ -1,11 +1,12 @@
 # FOR LOCAL DYNAMODB
 
-# parse CSV, delete previous table, create table, load data
+# parse CSV, delete previous table, create table, load data, write json of slot values
 require "aws-sdk"
 require "smarter_csv"
 
 Aws.config.update({
   region: "us-east-1",
+  endpoint: "http://localhost:8000"
 })
 
 table_name = 'pathfinderSpellsTable'
@@ -107,17 +108,17 @@ create_params = {
 	table_name: table_name,
 	key_schema: [
 		{
-			attribute_name: "id",
+			attribute_name: "name",
 			key_type: "HASH"  #Partition key
 		}
 	],
 	attribute_definitions: [
 		{
-			attribute_name: "id",
-			attribute_type: "N"
+			attribute_name: "name",
+			attribute_type: "S"
 		}
 	],
-	provisioned_throughput: { 
+	provisioned_throughput: {
 		read_capacity_units: 10,
 		write_capacity_units: 10
 	}
@@ -143,7 +144,7 @@ all_spells.each do |spell|
 
   begin
     result = dynamodb.put_item(params)
-    puts "Added spell: #{spell[:name]}"
+    puts "Local table || Added spell ##{spell[:id]}: #{spell[:name]}"
   rescue  Aws::DynamoDB::Errors::ServiceError => error
     puts "Unable to add spell:"
     puts "#{error.message}"
@@ -155,17 +156,25 @@ end
 query_params = {
   table_name: table_name,
   key: {
-    id: 23
+    name: "acid arrow"
   }
 }
 
-# begin
-#   result = dynamodb.get_item(params)
-#   printf "%i - %s\n%s\n%d\n", 
-#         result.item["name"],
-#         result.item["school"],
-#         result.item["description_short"],
-# rescue  Aws::DynamoDB::Errors::ServiceError => error
-#   puts "Unable to read item:"
-#   puts "#{error.message}"
-# end
+begin
+  result = dynamodb.get_item(query_params)
+  puts "\n#{result.item["name"]}\n#{result.item["school"]}\n#{result.item["description_short"]}"
+rescue  Aws::DynamoDB::Errors::ServiceError => error
+  puts "Unable to read item:"
+  puts "#{error.message}"
+end
+
+
+# WRITE SLOT VALUES JSON----------------------------------------------------- #
+values = []
+all_spells.each do |spell|
+  values << {name: {value: spell[:name].to_s} }
+end
+
+File.open("./slots_values.json","w") do |f|
+  f.write({name: "SPELLSLOT", values: values}.to_json)
+end

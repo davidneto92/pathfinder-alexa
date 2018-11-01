@@ -98,7 +98,7 @@ all_spells.each do |spell|
 
   begin
     result = dynamodb.put_item(params)
-    puts "Added spell: #{spell[:name]}"
+    puts "Live table || Added spell ##{spell[:id]}: #{spell[:name]}"
   rescue  Aws::DynamoDB::Errors::ServiceError => error
     puts "Unable to add spell:"
     puts "#{error.message}"
