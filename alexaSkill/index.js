@@ -1,10 +1,11 @@
 const Alexa = require('ask-sdk');
 
 const { LocalizationRequestInterceptor } = require("./interceptors/LocalizationRequestInterceptor")
-const {DebugRequestInterceptor} = require("./interceptors/DebugRequestInterceptor")
-const {DebugResponseInterceptor} = require("./interceptors/DebugResponseInterceptor")
+const { DebugRequestInterceptor } = require("./interceptors/DebugRequestInterceptor")
+const { DebugResponseInterceptor } = require("./interceptors/DebugResponseInterceptor")
 const standardHandlers = require("./handlers/standardHandlers")
 const spellHandlers = require("./handlers/spellHandlers")
+const languageStrings = require("./resources/languageStrings")
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
@@ -25,4 +26,5 @@ exports.handler = skillBuilder
 		new DebugResponseInterceptor()
 	)
 	.addErrorHandlers(standardHandlers.ErrorHandler)
+	.initializeI18N(languageStrings)
 	.lambda()
