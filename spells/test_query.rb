@@ -1,8 +1,8 @@
 require "aws-sdk"
 
 Aws.config.update({
-  region: "us-west-2",
-  endpoint: "http://localhost:8000"
+  region: "us-east-1",
+  # endpoint: "http://localhost:8000"
 })
 
 dynamodb = Aws::DynamoDB::Client.new
@@ -11,7 +11,7 @@ table_name = 'pathfinderSpellsTable'
 query_params = {
   table_name: table_name,
   key: {
-    id: 23
+    name: "acid arrow"
   }
 }
 
