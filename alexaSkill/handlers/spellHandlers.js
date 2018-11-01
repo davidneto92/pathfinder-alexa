@@ -1,6 +1,7 @@
 var AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
 var docClient = new AWS.DynamoDB.DocumentClient();
+const helper = require('../services/HelperFunctions')
 
 const SpellIntentHandler = {
     canHandle(handlerInput) {
@@ -8,11 +9,13 @@ const SpellIntentHandler = {
             handlerInput.requestEnvelope.request.intent.name === 'SpellIntent')
     },
     handle(handlerInput) {
+        const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)
+
         return new Promise((resolve) => {
             params = {
                 TableName: "pathfinderSpellsTable",
                 Key: {
-                    "name": "acid arrow"
+                    "name": slot
                 }
             };
 

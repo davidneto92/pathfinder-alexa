@@ -22,7 +22,14 @@
                 },
                 {
                     "name": "SpellIntent",
+                    "slots": [
+                        {
+                            "name": "spell",
+                            "type": "SPELLSLOT"
+                        }
+                    ],
                     "samples": [
+                        "tell me about {spell}",
                         "tell me about a spell",
                         "spell"
                     ]
