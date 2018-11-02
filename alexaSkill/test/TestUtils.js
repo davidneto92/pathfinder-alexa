@@ -1,4 +1,4 @@
-const Alexa = require('ask-sdk');
+const Alexa = require('ask-sdk-core');
 const assert = require("chai").assert;
 const alexaTest = require("alexa-skill-test-framework");
 
