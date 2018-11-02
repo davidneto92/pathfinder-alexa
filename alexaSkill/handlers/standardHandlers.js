@@ -7,9 +7,9 @@ const LaunchIntentHandler = {
         const speechText = requestAttributes.t("WELCOME")
         const reprompt = requestAttributes.t("WELCOME_REPROMPT")
         return handlerInput.responseBuilder
-        .speak(speechText)
-        .reprompt(reprompt)
-        .getResponse();
+            .speak(speechText)
+            .reprompt(reprompt)
+            .getResponse();
     }
 };
 

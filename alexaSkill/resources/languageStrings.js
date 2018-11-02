@@ -13,7 +13,7 @@ module.exports = {
             "FALLBACK": "I'll be honest, that was a very dumb question.",
 
             "SPELL_ASK": "Eventually this intent will tell you about the provided spell.",
-            "SPELL_ASK_REPROMPT": "",
+            "SPELL_ASK_REPROMPT": "empty",
             
         }
     }

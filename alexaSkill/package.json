@@ -1,7 +1,7 @@
 {
-	"name": "hello-world",
+	"name": "pathfinder-alexa",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Alexa skill to provide information on the arcane abilities in the Pathfinder RPG.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,9 @@
 	"dependencies": {
 		"ask-sdk-core": "^2.2.0",
 		"ask-sdk-model": "^1.8.0",
-		"aws-sdk": "^2.344.0"
+		"aws-sdk": "^2.344.0",
+		"i18next": "^12.0.0",
+		"i18next-sprintf-postprocessor": "^0.2.2"
 	},
 	"devDependencies": {
 		"alexa-skill-test-framework": "^1.2.4",
