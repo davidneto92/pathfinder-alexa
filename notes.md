@@ -18,7 +18,7 @@ Building the spells table
 Building the skill
 
 - ~~initialiize unit tests~~
-- launch requests
+- ~~launch requests~~
 - standard intents
 - ~~localize language strings~~
 - select spell
