@@ -20,10 +20,10 @@ exports.handler = skillBuilder
 		standardHandlers.FallbackHandler
 	)
 	.addRequestInterceptors(
+		new LocalizationRequestInterceptor(),
 		new DebugRequestInterceptor()
 	)
 	.addResponseInterceptors(
-		new LocalizationRequestInterceptor(),
 		new DebugResponseInterceptor()
 	)
 	.addErrorHandlers(standardHandlers.ErrorHandler)
