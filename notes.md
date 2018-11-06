@@ -12,8 +12,8 @@ Building the spells table
 - sanitize strings & spell names
   - remove any ampersands and correct transcoding errors
   - remove `/`, `-` from spell names and adjust table entries
-  - change names from `arcane sight, greater` --> `greater arcane sight`
-  - add synonyms
+  - ~~change names from `arcane sight, greater` --> `greater arcane sight`~~
+  - add spell synonyms
 
 Building the skill
 
@@ -22,29 +22,35 @@ Building the skill
 - standard intents
 - ~~localize language strings~~
 - select spell
-- spell data + slots
 
 ## Intents
 
-- select spell
+- SpellIntent
   - function similar to Dialogflow context
     - "ask about enlarge person"
     - Enlarge Person spell is saved to context, so calling other intents will read attribute of spell
   - asking about a new spell will replace the context (re-invoking this intent with a new slot value)
-- spell data (returns specific element of spell based on slot)
-  - spell description (default to description_short, saying "more" will play all)
-  - spell school
-  - spell components
-  - spell casting time
-  - spell range
-  - spell saving throw
-  - spell targets
-- random spell
+- MoreDetailsIntent (returns specific element of spell based on slot)
+  - use CATEGORY slot to determine the requested attribute (need to create all values in model)
+    - spell description (default to description_short, saying "more" will play all)
+    - spell school
+    - spell components
+    - spell casting time
+    - spell range
+    - spell saving throw
+    - spell targets
+  - if a user asks for more without a spell, go to spell intent to get their spell
+  - then with the spell and category filled the user will hear specifically about that spell's requested attribute
+- SummoningIntent
+  - tells the user which monsters/creatures they can summon with the specified spell
+  - can either read from the spell slot in session or direct to the spell intent to get their spell?
+- RandomSpellIntent
   - updates current spell with a randomly selected spell
   - slots:
     - school
     - class/level
-- Help/Stop/Cancel
+- HelpIntent (finalize dialog)
+- StopIntent/CancelIntent (finalize dialog)
 
 ## Ideas
 

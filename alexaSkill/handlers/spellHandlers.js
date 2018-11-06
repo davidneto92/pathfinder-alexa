@@ -9,35 +9,43 @@ const SpellIntentHandler = {
             handlerInput.requestEnvelope.request.intent.name === 'SpellIntent')
     },
     handle(handlerInput) {
-        const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)
-
-        return new Promise((resolve) => {
-            params = {
-                TableName: "pathfinderSpellsTable",
-                Key: {
-                    "name": slot
-                }
-            };
-
-            docClient.get(params, function(err, data) {
-                if (err) {
-                    console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
-                } else {
-                    if (data.Item) {
-                        return resolve(handlerInput.responseBuilder
-                            .speak(`Your spell is ${data.Item.name}, and it does this: ${data.Item.description_short}`)
-                            .withShouldEndSession(true)
-                            .getResponse());
-                    } else {
-                        return resolve(handlerInput.responseBuilder
-                            .speak(`I couldn't find that spell.`)
-                            .withShouldEndSession(true)
-                            .getResponse());
+        // if user provides spell slot value, query it
+        if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)) {
+            const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)
+            return new Promise((resolve) => {
+                params = {
+                    TableName: "pathfinderSpellsTable",
+                    Key: {
+                        "name": slot
                     }
-                }
-            });
-            
-        })
+                };
+    
+                docClient.get(params, function(err, data) {
+                    if (err) {
+                        console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
+                    } else {
+                        if (data.Item) {
+                            // TODO: save the found spell to the session
+                            return resolve(handlerInput.responseBuilder
+                                .speak(`Your spell is ${data.Item.name}, and it does this: ${data.Item.description_short}`)
+                                .withShouldEndSession(true)
+                                .getResponse());
+                        } else {
+                            return resolve(handlerInput.responseBuilder
+                                .speak(`I couldn't find that spell.`)
+                                .withShouldEndSession(true)
+                                .getResponse());
+                        }
+                    }
+                });
+                
+            })
+        } else { // user did not provide spell slot value
+            return resolve(handlerInput.responseBuilder
+                .speak("What GD spell do you want?")
+                .reprompt("WELL?")
+                .getResponse());
+        }        
     }
 }
 

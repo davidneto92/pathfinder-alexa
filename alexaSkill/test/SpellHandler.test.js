@@ -12,4 +12,13 @@ describe("Enter SpellIntent", () => {
         }]);
     });
 
+    describe("asks user to provide a spell", () => {
+        alexaTest.test([{
+            request: alexaTest.getIntentRequest("SpellIntent", {spell: ""}),
+            // saysLike: languageStrings.en.translation.SPELL_ASK,
+            saysLike: "What GD spell do you want?",
+            shouldEndSession: false
+        }]);
+    });
+
 });

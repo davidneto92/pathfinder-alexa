@@ -29,11 +29,25 @@
                     "samples": [
                         "tell me about {spell}",
                         "tell me about a spell",
+                        "what does {spell} do",
+                        "how does {spell} work",
                         "spell"
                     ]
                 }
             ],
             "types": [
+                {
+                    "name": "CATEGORY",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "name me!",
+                                "synonyms": []
+                            }
+                        }
+                        
+                    ]
+                },
                 {
                     "name": "SPELLSLOT",
                     "values": [{
