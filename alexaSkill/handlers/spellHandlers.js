@@ -1,6 +1,6 @@
 var AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
-var docClient = new AWS.DynamoDB.DocumentClient();
+const dynamodb = new AWS.DynamoDB();
 const helper = require('../services/helperFunctions.js')
 
 const SpellIntentHandler = {
@@ -16,23 +16,24 @@ const SpellIntentHandler = {
                 params = {
                     TableName: "pathfinderSpellsTable",
                     Key: {
-                        "name": slot
+                        "name": {
+                            "S": slot
+                        }
                     }
                 };
-    
-                docClient.get(params, function(err, data) {
+                dynamodb.getItem(params, function(err, data) {
                     if (err) {
                         console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
                     } else {
                         if (data.Item) {
                             // TODO: save the found spell to the session
                             return resolve(handlerInput.responseBuilder
-                                .speak(`Your spell is ${data.Item.name}, and it does this: ${data.Item.description_short}`)
+                                .speak(`Your spell is ${data.Item.name.S}, and it does this: ${data.Item.description_short.S}`)
                                 .withShouldEndSession(true)
                                 .getResponse());
                         } else {
                             return resolve(handlerInput.responseBuilder
-                                .speak(`I couldn't find that spell.`)
+                                .speak("I couldn't find that spell.")
                                 .withShouldEndSession(true)
                                 .getResponse());
                         }
@@ -41,10 +42,10 @@ const SpellIntentHandler = {
                 
             })
         } else { // user did not provide spell slot value
-            return resolve(handlerInput.responseBuilder
+            return handlerInput.responseBuilder
                 .speak("What GD spell do you want?")
-                .reprompt("WELL?")
-                .getResponse());
+                .reprompt("Well?")
+                .getResponse();
         }        
     }
 }

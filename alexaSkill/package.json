@@ -19,6 +19,7 @@
 		"alexa-skill-test-framework": "^1.2.4",
 		"chai": "^4.2.0",
 		"mocha": "^5.2.0",
-		"nyc": "^13.1.0"
+		"nyc": "^13.1.0",
+		"virtual-alexa": "^0.6.14"
 	}
 }
