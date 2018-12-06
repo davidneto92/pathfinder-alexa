@@ -41,10 +41,10 @@ const SpellIntentHandler = {
                 
             })
         } else { // user did not provide spell slot value
-            return resolve(handlerInput.responseBuilder
+            return handlerInput.responseBuilder
                 .speak("What GD spell do you want?")
                 .reprompt("WELL?")
-                .getResponse());
+                .getResponse();
         }        
     }
 }
