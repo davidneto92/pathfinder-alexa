@@ -15,7 +15,12 @@ module.exports = {
             "SPELL_ASK": "What spell would you like to learn about?",
             "SPELL_ASK_REPROMPT": "If you tell me the name of a spell, I can give you all sorts of information. What spell would you like to learn about?",
             "SPELL_FOUND": "Your spell is {{spellName}}, and it does this: {{spellDescriptionShort}}. What else would you like to know about this spell?",
-            "SPELL_FOUND_REPROMPT": "What else would you like to know about {{spellName}}?"
+            "SPELL_FOUND_REPROMPT": "What else would you like to know about {{spellName}}?",
+
+            "SUMMON_ASK": "",
+            "SUMMON_ASK_REPROMPT": "",
+            "SUMMON_FOUND": "",
+            "SUMMON_FOUND_REPROMPT": "",
         }
     }
 }

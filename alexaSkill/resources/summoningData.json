@@ -1,0 +1,19 @@
+{
+    "spells": [
+        {
+            "spell": "summon monster i",
+            "creatures": [
+                "ant",
+                "runt",
+                "cow"
+            ]
+        },
+        {
+            "spell": "summon monster ii",
+            "creatures": [
+                "bear",
+                "wolf"
+            ]
+        }
+    ]
+}

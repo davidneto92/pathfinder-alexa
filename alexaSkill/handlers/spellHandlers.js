@@ -31,6 +31,8 @@ const SpellIntentHandler = {
                             const speechText = requestAttributes.t("SPELL_FOUND", {spellName: data.Item.name, spellDescriptionShort: data.Item.description_short});
                             const reprompt = requestAttributes.t("SPELL_FOUND_REPROMPT", {spellName: data.Item.name});
 
+                            
+
                             return resolve(handlerInput.responseBuilder
                                 .speak(speechText)
                                 .reprompt(reprompt)

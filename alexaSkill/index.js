@@ -7,11 +7,13 @@ const { DebugRequestInterceptor } = require("./interceptors/DebugRequestIntercep
 const { DebugResponseInterceptor } = require("./interceptors/DebugResponseInterceptor")
 const standardHandlers = require("./handlers/standardHandlers")
 const spellHandlers = require("./handlers/spellHandlers")
+const summoningHandler = require("./handlers/summoningHandler")
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
 exports.handler = skillBuilder
 	.addRequestHandlers(
+		summoningHandler.SummoningIntentHandler,
 		spellHandlers.SpellIntentHandler,
 		standardHandlers.HelpIntentHandler,
 		standardHandlers.SessionEndedRequestHandler,
