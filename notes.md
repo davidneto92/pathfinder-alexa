@@ -44,6 +44,9 @@ Building the skill
 - SummoningIntent
   - tells the user which monsters/creatures they can summon with the specified spell
   - can either read from the spell slot in session or direct to the spell intent to get their spell?
+  - can ask about a spell found in spell intent what can be summoned
+    - routes to summon, or tells user its not a summoning spell
+    - send card of spells
 - RandomSpellIntent
   - updates current spell with a randomly selected spell
   - slots:
