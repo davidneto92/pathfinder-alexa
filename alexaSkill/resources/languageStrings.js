@@ -5,7 +5,7 @@
 module.exports = {
     "en": {
         "translation": {
-            "WELCOME": "Welcome to the Pathfinder Spell companion. I can provide information on the many arcane abilities found in Golarion. What spell would you like to hear about?",
+            "WELCOME": "Welcome to the Pathfinder Spell companion. I can provide information on the many arcane abilities found throughout Golarion. What can I help you with?",
             "WELCOME_REPROMPT": "What spell would you like to hear about?",
             "HELP": "This skill tells you about spells. Now, ask me about one.",
             "HELP_REPROMPT": "What spell are you gonna ask me about?",

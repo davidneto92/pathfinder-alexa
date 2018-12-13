@@ -15,7 +15,8 @@ const SpellIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const updatedIntent = handlerInput.requestEnvelope.request.intent;
 
-        if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)) { // if user provides a spell slot value, query it
+        if (handlerInput.requestEnvelope.request.dialogState === "COMPLETED") {
+        // if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)) { // if user provides a spell slot value, query it
             const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell);
             return new Promise((resolve) => {
                 params = {
@@ -40,9 +41,10 @@ const SpellIntentHandler = {
                                 .getResponse());
                         } else {
                             return resolve(handlerInput.responseBuilder
-                                .speak(requestAttributes.t("SPELL_NOT_FOUND", {slot: providedSpell}))
-                                .reprompt(requestAttributes.t("SPELL_NOT_FOUND_REPROMPT"))
-                                .addElicitSlotDirective("spell", updatedIntent)
+                                // .speak(requestAttributes.t("SPELL_NOT_FOUND", {slot: providedSpell}))
+                                // .reprompt(requestAttributes.t("SPELL_NOT_FOUND_REPROMPT"))
+                                // .addElicitSlotDirective("spell", updatedIntent)
+                                .addDelegateDirective(updatedIntent)
                                 .getResponse());
                         }
                     }
@@ -50,10 +52,12 @@ const SpellIntentHandler = {
 
             })
         } else { // user did not provide spell slot value
+            // const updatedIntent = handlerInput.requestEnvelope.request.intent;
             return handlerInput.responseBuilder
-                .speak( _.sample(requestAttributes.t("SPELL_ASK")) )
-                .reprompt(requestAttributes.t("SPELL_NOT_FOUND_REPROMPT"))
-                .addElicitSlotDirective("spell", updatedIntent)
+                // .speak( _.sample(requestAttributes.t("SPELL_ASK")) )
+                // .reprompt(requestAttributes.t("SPELL_NOT_FOUND_REPROMPT"))
+                // .addElicitSlotDirective("spell", updatedIntent)
+                .addDelegateDirective(updatedIntent)
                 .getResponse();
         }
     }

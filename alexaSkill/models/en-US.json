@@ -42,6 +42,10 @@
                         "tell me about a spell",
                         "spells"
                     ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
                 }
             ],
             "types": [
@@ -15711,30 +15715,6 @@
                     {
                         "type": "PlainText",
                         "value": "Which spell did you want?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Which spell?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "What's the spell?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "What's the name of the spell?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Which spell would you like?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Which spell are you asking about?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "What spell do you want to know about?"
                     }
                 ]
             }
