@@ -30,21 +30,22 @@ This skill is meant to provide quick information on the spells found in the Path
   - can ask about a spell found in spell intent what can be summoned
     - routes to summon, or tells user its not a summoning spell
     - send card of monsters
-- RandomSpellIntent
-  - updates current spell with a randomly selected spell
-  - slots:
-    - school
-    - class/level
 - HelpIntent (finalize dialog)
 - StopIntent/CancelIntent (finalize dialog)
 
 ## Ideas
 
+- string variation
 - add reference intent that can rattle off common questions
   - status conditions (sickened, fear, blinded etc.)
   - weapon properties (cold iron, silver etc.,)
   - enchantments (weapons and armor)
   - grappled note/blurb?
+- RandomSpellIntent
+  - updates current spell with a randomly selected spell
+  - slots:
+    - school
+    - class/level
 - get spell by class and level
   - "what fourth level wizard spells can I cast?"
 - dice roller
