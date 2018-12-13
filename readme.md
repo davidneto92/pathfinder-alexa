@@ -2,27 +2,6 @@
 
 This skill is meant to provide quick information on the spells found in the Pathfinder roleplaying game.
 
-## Tasks
-
-Building the spells table
-
-- ~~parse spells csv~~
-- ~~deploy spells to a local dynamo table~~
-- ~~deploy spells to a live dynamo table~~
-- sanitize strings & spell names
-  - remove any ampersands and correct transcoding errors
-  - remove `/`, `-` from spell names and adjust table entries
-  - ~~change names from `arcane sight, greater` --> `greater arcane sight`~~
-  - add spell synonyms
-
-Building the skill
-
-- ~~initialiize unit tests~~
-- ~~launch requests~~
-- standard intents
-- ~~localize language strings~~
-- select spell
-
 ## Intents
 
 - SpellIntent
@@ -30,6 +9,9 @@ Building the skill
     - "ask about enlarge person"
     - Enlarge Person spell is saved to context, so calling other intents will read attribute of spell
   - asking about a new spell will replace the context (re-invoking this intent with a new slot value)
+  - remove any ampersands and correct transcoding errors
+  - remove `/`, `-` from spell names and adjust table entries
+  - add spell synonyms
 - MoreDetailsIntent (returns specific element of spell based on slot)
   - use CATEGORY slot to determine the requested attribute (need to create all values in model)
     - spell description (default to description_short, saying "more" will play all)
@@ -39,6 +21,7 @@ Building the skill
     - spell range
     - spell saving throw
     - spell targets
+    - ...
   - if a user asks for more without a spell, go to spell intent to get their spell
   - then with the spell and category filled the user will hear specifically about that spell's requested attribute
 - SummoningIntent
@@ -46,7 +29,7 @@ Building the skill
   - can either read from the spell slot in session or direct to the spell intent to get their spell?
   - can ask about a spell found in spell intent what can be summoned
     - routes to summon, or tells user its not a summoning spell
-    - send card of spells
+    - send card of monsters
 - RandomSpellIntent
   - updates current spell with a randomly selected spell
   - slots:
@@ -62,9 +45,7 @@ Building the skill
   - weapon properties (cold iron, silver etc.,)
   - enchantments (weapons and armor)
   - grappled note/blurb?
+- get spell by class and level
+  - "what fourth level wizard spells can I cast?"
 - dice roller
   - "roll a d12"
-
-<!-- ### Uploading/deploying
-To deploy skill and lambda ➜ `ask deploy -p davidneto92`
-To update lambda ➜ `ask lambda upload -s lambda -f ask-custom-Pathfinder_Spells-davidneto92 -p davidneto92` -->
