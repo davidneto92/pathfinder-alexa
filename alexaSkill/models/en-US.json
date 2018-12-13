@@ -46,6 +46,28 @@
                 {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
+                },
+                {
+                    "name": "MoreDetailsIntent",
+                    "slots": [
+                        {
+                            "name": "detail",
+                            "type": "SPELLDETAIL",
+                            "samples": [
+                                "what {detail}",
+                                "is there a {detail}",
+                                "what is the {detail}",
+                                "tell me about its {detail}",
+                                "{detail}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "does it have a {detail}",
+                        "what is the spell's {detail}",
+                        "tell me about the {detail}",
+                        "tell me more"
+                    ]
                 }
             ],
             "types": [
@@ -15685,6 +15707,79 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "SPELLDETAIL",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "what category",
+                                "synonyms": [
+                                    "types",
+                                    "categories"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "casting time",
+                                "synonyms": [
+                                    "time"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "components",
+                                "synonyms": [
+                                    "somatic",
+                                    "verbal"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "school"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "levels",
+                                "synonyms": [
+                                    "class levels",
+                                    "class level"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "saving throw",
+                                "synonyms": [
+                                    "save"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "description",
+                                "synonyms": [
+                                    "full details",
+                                    "all information",
+                                    "all info",
+                                    "full description"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "range",
+                                "synonyms": [
+                                    "how far",
+                                    "rain"
+                                ]
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -15702,6 +15797,28 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.1022241886317.233863134211"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.913102382797.1502180270069.142987356336"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "MoreDetailsIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "detail",
+                            "type": "SPELLDETAIL",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.304700094298.436051308946"
                             }
                         }
                     ]
@@ -15715,6 +15832,24 @@
                     {
                         "type": "PlainText",
                         "value": "Which spell did you want?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.913102382797.1502180270069.142987356336",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please give me a real spell."
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.304700094298.436051308946",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What do you want to know about this spell?"
                     }
                 ]
             }

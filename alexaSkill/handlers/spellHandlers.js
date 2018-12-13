@@ -61,7 +61,7 @@ const SpellIntentHandler = {
                 .getResponse();
         }
     }
-}
+};
 
 const MoreDetailsIntentHandler = {
     canHandle(handlerInput) {
@@ -69,9 +69,20 @@ const MoreDetailsIntentHandler = {
             handlerInput.requestEnvelope.request.intent.name === 'MoreDetailsIntent')
     },
     handle(handlerInput) {
-
+        // If a currentSpell exists in the session attributes, continue
+        // if not, port user to SpellIntent to grab the spell?
+        const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        if (sessionAttributes.currentSpell) {
+            
+        } else {
+            // sends user to SpellIntent
+        }
     }
-}
+};
+
+// yes intent?
+// no intent?
 
 module.exports = {
     SpellIntentHandler,
