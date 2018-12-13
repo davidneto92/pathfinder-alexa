@@ -69,12 +69,14 @@ const MoreDetailsIntentHandler = {
             handlerInput.requestEnvelope.request.intent.name === 'MoreDetailsIntent')
     },
     handle(handlerInput) {
+        // After spell output, user is prompted for what attributes they want
+
         // If a currentSpell exists in the session attributes, continue
         // if not, port user to SpellIntent to grab the spell?
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         if (sessionAttributes.currentSpell) {
-            
+
         } else {
             // sends user to SpellIntent
         }
