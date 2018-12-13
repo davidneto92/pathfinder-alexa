@@ -1,3 +1,6 @@
+# originally I was importing this into the parsing files, but it was causing
+# a lot of  weird errors
+
 require "smarter_csv"
 
 module ParseCSV
@@ -59,8 +62,6 @@ module ParseCSV
 		end
 	end
 
-	# private
-	
 	def self.boolean_check(value)
 		if value == 1
 			return true
