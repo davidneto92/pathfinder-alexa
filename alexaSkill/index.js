@@ -1,6 +1,6 @@
 const Alexa = require('ask-sdk-core');
-var AWS = require('aws-sdk');
-AWS.config.update({region: 'us-east-1'});
+// var AWS = require('aws-sdk');
+// AWS.config.update({region: 'us-east-1'});
 
 const { LocalizationRequestInterceptor } = require("./interceptors/LocalizationRequestInterceptor");
 const { DebugRequestInterceptor } = require("./interceptors/DebugRequestInterceptor");
@@ -15,7 +15,7 @@ exports.handler = skillBuilder
 	.addRequestHandlers(
 		// summoningHandler.SummoningIntentHandler,
 		spellHandlers.SpellIntentHandler,
-		spellHandlers.MoreDetailsIntentHandler,
+		spellHandlers.SpellDetailsIntentHandler,
 		standardHandlers.HelpIntentHandler,
 		standardHandlers.SessionEndedRequestHandler,
 		standardHandlers.CancelAndStopIntentHandler,

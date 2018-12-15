@@ -1,6 +1,7 @@
 "use strict";
 
 // <break time="3s"/>
+// TODO: IMPROVE AND REVIEW ALL DIALOG
 
 module.exports = {
     "en": {
@@ -10,7 +11,7 @@ module.exports = {
             "HELP": "This skill tells you about spells. Now, ask me about one.",
             "HELP_REPROMPT": "What spell are you gonna ask me about?",
             "GOODBYE": "Come back soon!",
-            "FALLBACK": "I'll be honest, that was a very dumb question.",
+            "FALLBACK": "I'm not sure what you're asking about.",
 
             "SPELL_FOUND": "Your spell is {{spellName}}, and it does this: {{spellDescriptionShort}}. What else would you like to know about this spell?",
             "SPELL_FOUND_REPROMPT": "What else would you like to know about {{spellName}}?",
@@ -27,11 +28,12 @@ module.exports = {
                 "Which spell are you asking about?",
             ],
 
-
             "SUMMON_ASK": "",
             "SUMMON_ASK_REPROMPT": "",
             "SUMMON_FOUND": "",
             "SUMMON_FOUND_REPROMPT": "",
+            "SUMMON_SPELL_NOT_VALID": "this isn't a summoning spell",
+            "SUMMON_SPELL_NOT_VALID_REPROMPT": "you need to ask about a different spell!",
         }
     }
 }

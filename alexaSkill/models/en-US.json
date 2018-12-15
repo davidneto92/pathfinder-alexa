@@ -28,6 +28,10 @@
                                 "tell me about {spell}",
                                 "{spell}"
                             ]
+                        },
+                        {
+                            "name": "detail",
+                            "type": "SPELLDETAIL"
                         }
                     ],
                     "samples": [
@@ -48,7 +52,7 @@
                     "samples": []
                 },
                 {
-                    "name": "MoreDetailsIntent",
+                    "name": "SpellDetailsIntent",
                     "slots": [
                         {
                             "name": "detail",
@@ -60,6 +64,10 @@
                                 "tell me about its {detail}",
                                 "{detail}"
                             ]
+                        },
+                        {
+                            "name": "spell",
+                            "type": "SPELLSLOT"
                         }
                     ],
                     "samples": [
@@ -15808,7 +15816,7 @@
                     ]
                 },
                 {
-                    "name": "MoreDetailsIntent",
+                    "name": "SpellDetailsIntent",
                     "confirmationRequired": false,
                     "prompts": {},
                     "slots": [
@@ -15840,7 +15848,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Please give me a real spell."
+                        "value": "Why did you pick {spell}"
                     }
                 ]
             },

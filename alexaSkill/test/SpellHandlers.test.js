@@ -30,17 +30,17 @@ const alexa = va.VirtualAlexa.Builder()
 //     });
 // });
 
-describe("SpellIntents", () => {
+describe("SpellIntent", () => {
     afterEach(() => {
         alexa.endSession();
     });
     
-    it("will prompt the user for a spell if none provided", async () => {
+    it.only("will prompt the user for a spell if none provided", async () => {
         const { response } = await alexa.intend("SpellIntent");
         assert.isTrue(containsOne(response.outputSpeech.ssml, languageStrings.en.translation.SPELL_ASK));
     });
 
-    it.only("will return speech if the provided spell could not be found", async () => {
+    it("will return speech if the provided spell could not be found", async () => {
         const { response } = await alexa.intend("SpellIntent", { spell: "big time whale" });
         assert.include(response.outputSpeech.ssml, "Hmm, I couldn't find big time whale. What's the spell you're looking for again?");
     });
@@ -51,4 +51,15 @@ describe("SpellIntents", () => {
         const response = await alexa.intend("SpellIntent", { "spell": "protection from evil" });
         assert.include(response.outputSpeech.ssml, "Which spell did you want?");
     });   
+});
+
+describe("MoreDetailsIntent", () => {
+    beforeEach(() => {
+        alexa.endSession();
+    });
+
+    it("sends user to SpellIntent if no spell saved to session", async () => {
+        const response = await alexa.intend("SpellDetailsIntent");
+        assert.include(response.prompt, "Which spell did you want?");
+    });
 });

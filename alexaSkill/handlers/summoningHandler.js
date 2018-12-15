@@ -1,10 +1,6 @@
 const helper = require("../services/helperFunctions.js");
 const summoningData = require("../resources/summoningData.json").spells
 
-function checkIfSummoning(spell) {
-    // this spell should check if the spell being asked about is
-}
-
 const SummoningIntentHandler = {
     canHandle(handlerInput) {
         return (handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -15,9 +11,8 @@ const SummoningIntentHandler = {
         let reprompt;
 		const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
 		const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-		const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.modifier);
 
-        // if slot matches a viable summoning spell OR spell in sessionAttributes matches
+        // TODO: if a spell exists in the current session OR redirect to spellIntent
         if (`slot matches a viable slot || sessionAttributes.currentSpell != ""`) {
 			speechText = requestAttributes.t("SUMMON_FOUND")
 			reprompt = requestAttributes.t("SUMMON_FOUND_REPROMPT")
