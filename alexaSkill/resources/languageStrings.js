@@ -13,6 +13,8 @@ module.exports = {
             "GOODBYE": "Come back soon!",
             "FALLBACK": "I'm not sure what you're asking about.",
 
+            // Should school be included?
+            // "{{spellName}} is a {{spellSchool}} spell with the following effect: {{spellDescriptionShort}}. What else would you like to know about this spell?"
             "SPELL_FOUND": "Your spell is {{spellName}}, and it does this: {{spellDescriptionShort}}. What else would you like to know about this spell?",
             "SPELL_FOUND_REPROMPT": "What else would you like to know about {{spellName}}?",
             "SPELL_NOT_FOUND": "Hmm, I couldn't find {{providedSpell}}. What's the spell you're looking for again?",
@@ -26,6 +28,18 @@ module.exports = {
                 "Which spell is it?",
                 "Which spell would you like?",
                 "Which spell are you asking about?",
+            ],
+
+            "DETAIL_ASK": [
+                "What would you like to know about that spell?",
+                "What can I tell you about {{spellName}}?",
+                "What are you looking for on {{spellName}}",
+            ],
+            "DETAIL_ASK_REPROMPT": "I can tell you about a few different features of {{spellName}}, such as x y z. What would you like to know about this spell?",
+            "DETAIL_FOUND_HEADER": "",
+            "DETAIL_FOUND_FOLLOW_UP": [
+                "What else did you want to know about {{spellName}}?",
+                "What else do you want to know?"
             ],
 
             "SUMMON_ASK": "",

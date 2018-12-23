@@ -55,25 +55,31 @@
                     "name": "SpellDetailsIntent",
                     "slots": [
                         {
-                            "name": "detail",
-                            "type": "SPELLDETAIL",
-                            "samples": [
-                                "what {detail}",
-                                "is there a {detail}",
-                                "what is the {detail}",
-                                "tell me about its {detail}",
-                                "{detail}"
-                            ]
-                        },
-                        {
                             "name": "spell",
                             "type": "SPELLSLOT"
+                        },
+                        {
+                            "name": "spellDetail",
+                            "type": "SPELLDETAIL",
+                            "samples": [
+                                "{spellDetail}",
+                                "tell me about its {spellDetail}",
+                                "what's the {spellDetail}",
+                                "what is the {spellDetail}",
+                                "is there a {spellDetail}",
+                                "what {spellDetail}"
+                            ]
                         }
                     ],
                     "samples": [
-                        "does it have a {detail}",
-                        "what is the spell's {detail}",
-                        "tell me about the {detail}",
+                        "is there a {spellDetail}",
+                        "what's the {spellDetail} ",
+                        "I need the {spellDetail}",
+                        "spell details",
+                        "what can it do",
+                        "does it have a {spellDetail}",
+                        "what is the spell's {spellDetail}",
+                        "tell me about the {spellDetail}",
                         "tell me more"
                     ]
                 }
@@ -15821,12 +15827,19 @@
                     "prompts": {},
                     "slots": [
                         {
-                            "name": "detail",
+                            "name": "spell",
+                            "type": "SPELLSLOT",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "spellDetail",
                             "type": "SPELLDETAIL",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
-                                "elicitation": "Elicit.Slot.304700094298.436051308946"
+                                "elicitation": "Elicit.Slot.1186780866196.467852340799"
                             }
                         }
                     ]
@@ -15858,6 +15871,15 @@
                     {
                         "type": "PlainText",
                         "value": "What do you want to know about this spell?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1186780866196.467852340799",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like to know about this spell?"
                     }
                 ]
             }
