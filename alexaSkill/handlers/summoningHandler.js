@@ -13,7 +13,7 @@ const SummoningIntentHandler = {
 		const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         // TODO: if a spell exists in the current session OR redirect to spellIntent
-        if (`slot matches a viable slot || sessionAttributes.currentSpell != ""`) {
+        if (`slot matches a viable slot || sessionAttributes.currentSpell`) {
 			speechText = requestAttributes.t("SUMMON_FOUND")
 			reprompt = requestAttributes.t("SUMMON_FOUND_REPROMPT")
 		} else {

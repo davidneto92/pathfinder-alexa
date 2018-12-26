@@ -65,7 +65,7 @@ const SpellIntentHandler = {
 
             });
         } else { // user did not provide spell slot value
-            const speechText = _.sample(requestAttributes.t("SPELL_ASK"));
+            const speechText = _.sample(requestAttributes.t("SPELL_ELICIT"));
             const reprompt = requestAttributes.t("SPELL_NOT_FOUND_REPROMPT");
             return handlerInput.responseBuilder
                 .speak(speechText)
@@ -96,7 +96,7 @@ const SpellDetailsIntentHandler = {
                 const spellDetail = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spellDetail)
                 // if spellDetail === I dont know, delete slot value, tell user what they can ask for, and elicit slot
 
-                const speech = helper.returnSpellAttributeSpeech(currentSpell, spellDetail);
+                const speech = helper.returnSpellDetailSpeech(currentSpell, spellDetail, requestAttributes);
 
                 return handlerInput.responseBuilder
                     .speak(speech.speechText)

@@ -1,5 +1,4 @@
 const _ = require("lodash");
-const languageStrings = require("../resources/languageStrings");
 
 function slotValue(intentWithSlot) {
     if (intentWithSlot.resolutions && intentWithSlot.resolutions.resolutionsPerAuthority[0].values) {
@@ -16,22 +15,19 @@ function slotValue(intentWithSlot) {
 };
 
 // This function returns the string (from the requestAttributes) with data that corresponds to the provided spellDetail.
-function returnSpellAttributeSpeech(spell, spellDetail) {
-    // include handling for "i don't know" slot
+// initial support for range, casting time, school, saving throw, i don't know
+function returnSpellDetailSpeech(spell, spellDetailSlot, requestAttributes) {
     let speechText;
     let reprompt;
 
-    // initial support for
-    // range, casting time, school, saving throw
-
-    if (spellDetail === "range") {
-        speechText = spell.range;
+    if (spellDetailSlot === "range") {
+        speechText = requestAttributes.t("DETAIL_FOUND_RANGE", {"spellName": spell.name, "spellRange": spell.range});
         reprompt = "blah";
-    } else if (spellDetail === "") {
+    } else if (spellDetailSlot === "") {
 
     }
 
-    return { speechText: speechText, reprompt: reprompt };
+    return { "speechText": speechText, "reprompt": reprompt };
 };
 
 function generateSpellLevelSpeech(spell) {
@@ -42,7 +38,7 @@ function generateSpellRequirements(spell) {
     // reads through the spell_requirements object to generate FVSM components string
 };
 
-function checkIfSummoning(spell) {
+function checkIfSummoning(spell, requestAttributes) {
     // check if the spell being asked about is a valid summoning spell
     // if true, return summoning data
         // {speechText: x spell can is summoning spell, summons: [array of possible summons]}
@@ -52,8 +48,12 @@ function checkIfSummoning(spell) {
 function numeralConversion(speechText) {
     // modifies speechOutput to be sure roman numerals are spoken correctly
 };
+
+// function to query dynamo?????
+
 module.exports = {
     slotValue,
-    returnSpellAttributeSpeech,
-    checkIfSummoning
+    returnSpellDetailSpeech,
+    checkIfSummoning,
+    numeralConversion
 };

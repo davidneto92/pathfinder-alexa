@@ -42,7 +42,7 @@ describe("SpellIntent", () => {
 
     it("will prompt the user for a spell if none provided", async () => {
         const { response } = await alexa.intend("SpellIntent");
-        assert.isTrue(containsOne(response.outputSpeech.ssml, languageStrings.en.translation.SPELL_ASK));
+        assert.isTrue(containsOne(response.outputSpeech.ssml, languageStrings.en.translation.SPELL_ELICIT));
     });
 
     it.skip("will return speech if the provided spell could not be found", async () => {
@@ -59,13 +59,14 @@ describe("SpellIntent", () => {
 });
 
 describe.only("MoreDetailsIntent", () => {
-    beforeEach(() => {
+    beforeEach( async () => {
         alexa.endSession();
+        await alexa.resetFilter();
     });
 
     it("sends user to SpellIntent if no spell saved to session", async () => {
         const { response } = await alexa.intend("SpellDetailsIntent");
-        assert.isTrue(containsOne(response.outputSpeech.ssml, languageStrings.en.translation.SPELL_ASK));
+        assert.isTrue(containsOne(response.outputSpeech.ssml, languageStrings.en.translation.SPELL_ELICIT));
     });
 
     it("asks user to provide a spellDetail if none given", async () => {
@@ -88,6 +89,7 @@ describe.only("MoreDetailsIntent", () => {
         });
         
         const { response } = await alexa.intend("SpellDetailsIntent", {spellDetail: "range"});
-
+        assert.include(response.outputSpeech.ssml, "The range of protection from evil is: touch");
+        await alexa.resetFilter();
     });
 });

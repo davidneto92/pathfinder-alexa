@@ -15753,13 +15753,18 @@
                         },
                         {
                             "name": {
-                                "value": "school"
+                                "value": "school",
+                                "synonyms": [
+                                    "skew"
+                                ]
                             }
                         },
                         {
                             "name": {
                                 "value": "levels",
                                 "synonyms": [
+                                    "level requirements",
+                                    "class requirements",
                                     "class levels",
                                     "class level"
                                 ]
@@ -15769,6 +15774,8 @@
                             "name": {
                                 "value": "saving throw",
                                 "synonyms": [
+                                    "saving",
+                                    "save d. c.",
                                     "save"
                                 ]
                             }
@@ -15777,6 +15784,7 @@
                             "name": {
                                 "value": "description",
                                 "synonyms": [
+                                    "full thing",
                                     "full details",
                                     "all information",
                                     "all info",
@@ -15788,6 +15796,7 @@
                             "name": {
                                 "value": "range",
                                 "synonyms": [
+                                    "rage",
                                     "how far",
                                     "rain"
                                 ]
