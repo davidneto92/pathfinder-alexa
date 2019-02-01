@@ -44,6 +44,7 @@ module.exports = {
             "DETAIL_ASK_REPROMPT": "I can tell you about a few different features of {{spellName}}, such as x y z. What would you like to know about this spell?",
             "DETAIL_FOUND_HEADER": "",
             "DETAIL_FOUND_RANGE": "The range of {{spellName}} is: {{spellRange}}",
+            // should shorten
             "DETAIL_FOUND_RANGE_REPROMPT": "The range on {{spellName}} is: {{spellRange}}",
             "DETAIL_FOUND_FOLLOW_UP": [
                 "What else did you want to know about {{spellName}}?",
