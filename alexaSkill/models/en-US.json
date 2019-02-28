@@ -2,8 +2,7 @@
     "interactionModel": {
         "languageModel": {
             "invocationName": "pathfinder",
-            "intents": [
-                {
+            "intents": [{
                     "name": "AMAZON.CancelIntent",
                     "samples": []
                 },
@@ -17,8 +16,7 @@
                 },
                 {
                     "name": "SpellIntent",
-                    "slots": [
-                        {
+                    "slots": [{
                             "name": "spell",
                             "type": "SPELLSLOT",
                             "samples": [
@@ -40,11 +38,15 @@
                         "spell information",
                         "I need {spell}",
                         "how about {spell}",
-                        "what does {spell} do",
+                        "how does {spell} work",
                         "give me {spell}",
                         "tell me about {spell}",
                         "tell me about a spell",
-                        "spells"
+                        "spells",
+                        "what does {spell} do",
+                        "what can {spell} do",
+                        "what is {spell}",
+                        "what is {spell} for"
                     ]
                 },
                 {
@@ -53,8 +55,7 @@
                 },
                 {
                     "name": "SpellDetailsIntent",
-                    "slots": [
-                        {
+                    "slots": [{
                             "name": "spell",
                             "type": "SPELLSLOT"
                         },
@@ -72,9 +73,16 @@
                         }
                     ],
                     "samples": [
+                        "more about {spell}",
+                        "information on {spell}",
+                        "more information on {spell}",
+                        "more details about {spell}",
+                        "what else about {spell}",
+                        "specifics of {spell}",
                         "is there a {spellDetail}",
                         "what's the {spellDetail} ",
                         "I need the {spellDetail}",
+                        "more details",
                         "spell details",
                         "what can it do",
                         "does it have a {spellDetail}",
@@ -84,11 +92,9 @@
                     ]
                 }
             ],
-            "types": [
-                {
+            "types": [{
                     "name": "SPELLSLOT",
-                    "values": [
-                        {
+                    "values": [{
                             "name": {
                                 "value": "acid arrow"
                             }
@@ -15724,8 +15730,7 @@
                 },
                 {
                     "name": "SPELLDETAIL",
-                    "values": [
-                        {
+                    "values": [{
                             "name": {
                                 "value": "what category",
                                 "synonyms": [
@@ -15736,9 +15741,20 @@
                         },
                         {
                             "name": {
+                                "value": "don't know",
+                                "synonyms": [
+                                    "I don't know",
+                                    "I'm not sure"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "casting time",
                                 "synonyms": [
-                                    "time"
+                                    "time",
+                                    "how long to cast",
+                                    "how many rounds to cast"
                                 ]
                             }
                         },
@@ -15755,7 +15771,10 @@
                             "name": {
                                 "value": "school",
                                 "synonyms": [
-                                    "skew"
+                                    "skew",
+                                    "category",
+                                    "magic school",
+                                    "type of magic"
                                 ]
                             }
                         },
@@ -15807,35 +15826,29 @@
             ]
         },
         "dialog": {
-            "intents": [
-                {
+            "intents": [{
                     "name": "SpellIntent",
                     "confirmationRequired": false,
                     "prompts": {},
-                    "slots": [
-                        {
-                            "name": "spell",
-                            "type": "SPELLSLOT",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.1022241886317.233863134211"
-                            },
-                            "validations": [
-                                {
-                                    "type": "hasEntityResolutionMatch",
-                                    "prompt": "Slot.Validation.913102382797.1502180270069.142987356336"
-                                }
-                            ]
-                        }
-                    ]
+                    "slots": [{
+                        "name": "spell",
+                        "type": "SPELLSLOT",
+                        "confirmationRequired": false,
+                        "elicitationRequired": true,
+                        "prompts": {
+                            "elicitation": "Elicit.Slot.1022241886317.233863134211"
+                        },
+                        "validations": [{
+                            "type": "hasEntityResolutionMatch",
+                            "prompt": "Slot.Validation.913102382797.1502180270069.142987356336"
+                        }]
+                    }]
                 },
                 {
                     "name": "SpellDetailsIntent",
                     "confirmationRequired": false,
                     "prompts": {},
-                    "slots": [
-                        {
+                    "slots": [{
                             "name": "spell",
                             "type": "SPELLSLOT",
                             "confirmationRequired": false,
@@ -15855,42 +15868,33 @@
                 }
             ]
         },
-        "prompts": [
-            {
+        "prompts": [{
                 "id": "Elicit.Slot.1022241886317.233863134211",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Which spell did you want?"
-                    }
-                ]
+                "variations": [{
+                    "type": "PlainText",
+                    "value": "Which spell did you want?"
+                }]
             },
             {
                 "id": "Slot.Validation.913102382797.1502180270069.142987356336",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Why did you pick {spell}"
-                    }
-                ]
+                "variations": [{
+                    "type": "PlainText",
+                    "value": "Why did you pick {spell}"
+                }]
             },
             {
                 "id": "Elicit.Slot.304700094298.436051308946",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "What do you want to know about this spell?"
-                    }
-                ]
+                "variations": [{
+                    "type": "PlainText",
+                    "value": "What do you want to know about this spell?"
+                }]
             },
             {
                 "id": "Elicit.Slot.1186780866196.467852340799",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "What would you like to know about this spell?"
-                    }
-                ]
+                "variations": [{
+                    "type": "PlainText",
+                    "value": "What would you like to know about this spell?"
+                }]
             }
         ]
     }
