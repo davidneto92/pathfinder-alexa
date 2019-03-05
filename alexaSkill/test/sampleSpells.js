@@ -98,6 +98,7 @@ module.exports = {
         "id": 529,
         "duration": "1 round/level"
     },
+    
     sampleThree: {
         // need something with saving throw
     },

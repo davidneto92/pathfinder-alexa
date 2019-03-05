@@ -43,9 +43,9 @@ const SpellIntentHandler = {
                                 .reprompt(reprompt)
                                 .getResponse());
 
-                            // } else if (detail slot provided) {
-                                // may want to port to the SpellDetailsIntent instead of handling here???
-                            // Idea: if a detail slot is provided, the skill should output the requested spell's attribute & then prompt for more
+                            // } else if (a detail slot provided) {
+                                // port into SpellDetailsIntent after saving spell to session
+                            // Idea: if a detail slot is not provided, the skill should output the requested spell's attribute & then prompt for more
                                 // call the helper.returnSpellAttributeSpeech() function to get the speech output
                             // }
 
@@ -94,6 +94,7 @@ const SpellDetailsIntentHandler = {
             
             if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spellDetail)) {
                 const spellDetail = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spellDetail)
+                // add conditional
                 // if spellDetail === I dont know, delete slot value, tell user what they can ask for, and elicit slot
 
                 const speech = helper.returnSpellDetailSpeech(currentSpell, spellDetail, requestAttributes);

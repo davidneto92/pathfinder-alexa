@@ -14,6 +14,8 @@ function slotValue(intentWithSlot) {
     }
 };
 
+// Pull the slot ID function
+
 // This function returns the string (from the requestAttributes) with data that corresponds to the provided spellDetail.
 // initial support for range, casting time, school, saving throw, i don't know
 function returnSpellDetailSpeech(spell, spellDetailSlot, requestAttributes) {
@@ -48,8 +50,6 @@ function checkIfSummoning(spell, requestAttributes) {
 function numeralConversion(speechText) {
     // modifies speechOutput to be sure roman numerals are spoken correctly
 };
-
-// function to query dynamo?????
 
 module.exports = {
     slotValue,
