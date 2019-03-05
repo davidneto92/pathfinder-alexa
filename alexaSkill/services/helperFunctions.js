@@ -14,7 +14,13 @@ function slotValue(intentWithSlot) {
     }
 };
 
-// Pull the slot ID function
+function getSlotIdByName(slotName, intent) {
+    if (intent.slots[slotName].value === '') {
+        return false
+    } else {
+        return intent.slots[slotName].resolutions.resolutionsPerAuthority[0].values[0].value.id
+    }
+}
 
 // This function returns the string (from the requestAttributes) with data that corresponds to the provided spellDetail.
 // initial support for range, casting time, school, saving throw, i don't know
