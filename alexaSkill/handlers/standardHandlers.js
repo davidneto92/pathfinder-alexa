@@ -1,12 +1,19 @@
+const _ = require("lodash");
+
 const LaunchIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
     },
     handle(handlerInput) {
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
-        const speechText = requestAttributes.t("WELCOME")
+        const speechText = `${requestAttributes.t("WELCOME")} ${_.sample(requestAttributes.t("SPELL_ELICIT"))}`
         const reprompt = requestAttributes.t("WELCOME_REPROMPT")
         return handlerInput.responseBuilder
+            .addElicitSlotDirective("spell", {
+                name: "SpellIntent",
+                confirmationStatus: "NONE",
+                slots: {}
+            })
             .speak(speechText)
             .reprompt(reprompt)
             .getResponse();

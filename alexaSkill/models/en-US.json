@@ -88,7 +88,8 @@
                         "does it have a {spellDetail}",
                         "what is the spell's {spellDetail}",
                         "tell me about the {spellDetail}",
-                        "tell me more"
+                        "tell me more",
+                        "I need to know the {spellDetail}"
                     ]
                 }
             ],
@@ -15734,8 +15735,10 @@
                             "name": {
                                 "value": "what category",
                                 "synonyms": [
-                                    "types",
-                                    "categories"
+                                    "what categories",
+                                    "categories",
+                                    "details",
+                                    "types"
                                 ]
                             }
                         },
@@ -15744,7 +15747,21 @@
                                 "value": "don't know",
                                 "synonyms": [
                                     "I don't know",
-                                    "I'm not sure"
+                                    "I'm not sure",
+                                    "not sure"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nothing",
+                                "synonyms": [
+                                    "nothing else",
+                                    "nothing more",
+                                    "all set",
+                                    "no more",
+                                    "that's enough",
+                                    "that's all"
                                 ]
                             }
                         },
@@ -15753,6 +15770,8 @@
                                 "value": "casting time",
                                 "synonyms": [
                                     "time",
+                                    "time to cast",
+                                    "casting duration",
                                     "how long to cast",
                                     "how many rounds to cast"
                                 ]
@@ -15795,6 +15814,7 @@
                                 "synonyms": [
                                     "saving",
                                     "save d. c.",
+                                    "the save",
                                     "save"
                                 ]
                             }

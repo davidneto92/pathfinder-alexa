@@ -58,7 +58,7 @@ describe("SpellIntent", () => {
     });
 });
 
-describe.only("MoreDetailsIntent", () => {
+describe("MoreDetailsIntent", () => {
     beforeEach( async () => {
         alexa.endSession();
         await alexa.resetFilter();

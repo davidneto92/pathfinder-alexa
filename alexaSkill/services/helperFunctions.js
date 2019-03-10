@@ -29,10 +29,26 @@ function returnSpellDetailSpeech(spell, spellDetailSlot, requestAttributes) {
     let reprompt;
 
     if (spellDetailSlot === "range") {
-        speechText = requestAttributes.t("DETAIL_FOUND_RANGE", {"spellName": spell.name, "spellRange": spell.range});
-        reprompt = "blah";
-    } else if (spellDetailSlot === "") {
+        speechText = slashCorrection(requestAttributes.t("DETAIL_FOUND_RANGE", {"spellName": spell.name, "spellRange": spell.range}));
+        reprompt = slashCorrection(requestAttributes.t("DETAIL_FOUND_RANGE_REPROMPT", {"spellRange": spell.range}));
+    } else if (spellDetailSlot === "casting time") {
+        speechText = slashCorrection(requestAttributes.t("DETAIL_FOUND_CASTING_TIME", {"spellName": spell.name, "spellCastingTime": spell.casting_time}));
+        reprompt = slashCorrection(requestAttributes.t("DETAIL_FOUND_CASTING_TIME_REPROMPT", {"spellCastingTime": spell.casting_time}));
+    } else if (spellDetailSlot === "saving throw") {
+        if (spell.saving_throw === "none") {
+            // special dialog if there is no save
+        } else {
+            // speechText = slashCorrection(requestAttributes.t("DETAIL_FOUND_RANGE", {"spellName": spell.name, "spellRange": spell.range}));
+            // reprompt = slashCorrection("blah");
+        }
+    } else if (spellDetailSlot === "description") { // full description
 
+    } else if (spellDetailSlot === "levels") {
+
+    } else if (spellDetailSlot === "school") {
+        
+    } else if (spellDetailSlot === "components") {
+        
     }
 
     return { "speechText": speechText, "reprompt": reprompt };
@@ -57,9 +73,15 @@ function numeralConversion(speechText) {
     // modifies speechOutput to be sure roman numerals are spoken correctly
 };
 
+// corrects Alexa's "1 min slash level" to be "1 min PER level"
+function slashCorrection(description) {
+    return _.replace(description, "./level", " per level").replace("./2 levels", " per two levels").replace("./3 levels", " per three levels")
+}
+
 module.exports = {
     slotValue,
     returnSpellDetailSpeech,
     checkIfSummoning,
-    numeralConversion
+    numeralConversion,
+    slashCorrection
 };
