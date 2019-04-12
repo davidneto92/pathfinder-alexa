@@ -4,7 +4,7 @@ let DebugRequestInterceptor = (function () {
     let DebugRequestInterceptor = function () {
     }
     DebugRequestInterceptor.prototype.process = function (handlerInput) {
-        console.debug("Received request: " + JSON.stringify(handlerInput, null, 2));
+        console.log("Received request: " + JSON.stringify(handlerInput, null, 2));
     };
     return DebugRequestInterceptor;
 }());

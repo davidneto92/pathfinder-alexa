@@ -20,11 +20,13 @@
                             "name": "spell",
                             "type": "SPELLSLOT",
                             "samples": [
+                                "{spell}",
+                                "I think it's {spell}",
                                 "it's {spell}",
                                 "I want {spell}",
                                 "give me {spell}",
-                                "tell me about {spell}",
-                                "{spell}"
+                                "the spell {spell}",
+                                "tell me about {spell}"
                             ]
                         },
                         {
@@ -33,6 +35,8 @@
                         }
                     ],
                     "samples": [
+                        "find me the spell {spell}",
+                        "I need the spell {spell}",
                         "I need to know about a spell",
                         "I need to know about {spell}",
                         "spell information",
@@ -15758,7 +15762,9 @@
                                 "synonyms": [
                                     "nothing else",
                                     "nothing more",
+                                    "all done",
                                     "all set",
+                                    "don't want more",
                                     "no more",
                                     "that's enough",
                                     "that's all"

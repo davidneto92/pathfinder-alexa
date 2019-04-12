@@ -4,7 +4,7 @@ let DebugResponseInterceptor = (function () {
     let DebugResponseInterceptor = function() {
     }
     DebugResponseInterceptor.prototype.process = function (handlerInput) {
-        console.debug("Sending response: " + JSON.stringify(handlerInput.responseBuilder.getResponse(), null, 2));
+        console.log("Sending response: " + JSON.stringify(handlerInput.responseBuilder.getResponse(), null, 2));
     };
     return DebugResponseInterceptor;
 }());

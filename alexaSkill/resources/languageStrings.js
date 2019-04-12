@@ -22,8 +22,8 @@ module.exports = {
                 "Which spell do you want to know about?",
                 "Which spell would you like to hear about?"
             ],
-            "SPELL_FOUND": "I found the spell {{spellName}}, and here's a brief description: <prosody rate=\"90%\">{{spellDescriptionShort}}.</prosody>",
-            // Need logic for tip. Maybe 1st time launch, then 1/5 times after
+            "SPELL_FOUND": "I found the spell, {{spellName}}, and here's {{lengthText}} description: <break time=\"500ms\"/> <prosody rate=\"95%\">{{spellDescriptionShort}}.</prosody> {{footer}}",
+            // Need logic for tip. Maybe 1st time launch, then 1/5 times after 
             // "SPELL_FOUND_TIP": "I can also tell you the other characteristics, such as it's range or saving throw.",
             "SPELL_FOUND_ASK_FOR_DETAIL_PROMPT": "What else would you like to know about this spell?",
             "SPELL_FOUND_REPROMPT": "What else can I tell you about {{spellName}}?",
@@ -42,8 +42,20 @@ module.exports = {
             "DETAIL_FOUND_RANGE_REPROMPT": "The range is: {{spellRange}}",
             "DETAIL_FOUND_CASTING_TIME": "The casting time for {{spellName}} is: {{spellCastingTime}}",
             "DETAIL_FOUND_CASTING_TIME_REPROMPT": "The casting time is: {{spellCastingTime}}",
-            // "DETAIL_FOUND_SAVING_THROW": "The casting time for {{spellName}} is: {{castingTime}}",
-            // "DETAIL_FOUND_SAVING_THROW_REPROMPT": "The casting time is: {{castingTime}}",
+            "DETAIL_FOUND_NO_SAVING_THROW": "{{spellName}} does not have a saving throw",
+            "DETAIL_FOUND_NO_SAVING_THROW_REPROMPT": "There is no saving throw for {{spellName}}.",
+            "DETAIL_FOUND_SAVING_THROW": "The saving throw for {{spellName}} is: {{savingThrow}}",
+            "DETAIL_FOUND_SAVING_THROW_REPROMPT": "The saving throw is: {{savingThrow}}",
+            "DETAIL_FOUND_SAVING_THROW_SEE_TEXT": "<break time=\"250ms\"/> For the specifics of this save, ask me for the full description.",
+            "DETAIL_FOUND_SAVING_THROW_SEE_TEXT_ONLY": "For a more information on the save for {{spellName}}, ask me for the full description.",
+            "DETAIL_FOUND_FULL_DESCRIPTION": "The full text for {{spellName}} is as follows: {{spellDescription}}",
+            "DETAIL_FOUND_FULL_DESCRIPTION_REPROMPT": "To hear the full text of {{spellName}} again, ask me for the full description.",
+            "DETAIL_FOUND_SCHOOL": "The spell {{spellName}} belongs to the {{spellSchool}} school.",
+            "DETAIL_FOUND_SCHOOL_REPROMPT": "{{spellName}} is as {{spellSchool}} spell.",
+            "DETAIL_FOUND_SPELL_REQUIREMENTS_ONE" : "{{spellName}} has only a {{componentList}} component.",
+            "DETAIL_FOUND_SPELL_REQUIREMENTS_TWO" : "{{spellName}} has a {{componentList}} component.",
+            "DETAIL_FOUND_SPELL_REQUIREMENTS_MORE": "{{spellName}} has {{componentList}} components.",
+
 
             "DETAIL_FOUND_FOLLOW_UP": [
                 "What else did you want to know about {{spellName}}?",
