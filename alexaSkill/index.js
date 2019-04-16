@@ -1,6 +1,6 @@
-const Alexa = require('ask-sdk-core');
-// var AWS = require('aws-sdk');
-// AWS.config.update({region: 'us-east-1'});
+const Alexa = require("ask-sdk-core");
+// var AWS = require("aws-sdk");
+// AWS.config.update({region: "us-east-1"});
 
 const { LocalizationRequestInterceptor } = require("./interceptors/LocalizationRequestInterceptor");
 const { DebugRequestInterceptor } = require("./interceptors/DebugRequestInterceptor");

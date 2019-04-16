@@ -2,7 +2,7 @@ const _ = require("lodash");
 
 const LaunchIntentHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
+        return handlerInput.requestEnvelope.request.type === "LaunchRequest"
     },
     handle(handlerInput) {
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
@@ -22,9 +22,9 @@ const LaunchIntentHandler = {
 
 const CancelAndStopIntentHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-        && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+        return handlerInput.requestEnvelope.request.type === "IntentRequest"
+        && (handlerInput.requestEnvelope.request.intent.name === "AMAZON.CancelIntent"
+        || handlerInput.requestEnvelope.request.intent.name === "AMAZON.StopIntent");
     },
     handle(handlerInput) {
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
@@ -38,7 +38,7 @@ const CancelAndStopIntentHandler = {
 
 const SessionEndedRequestHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+        return handlerInput.requestEnvelope.request.type === "SessionEndedRequest";
     },
     handle(handlerInput) {
         console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
@@ -65,8 +65,8 @@ const ErrorHandler = {
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+        return handlerInput.requestEnvelope.request.type === "IntentRequest"
+            && handlerInput.requestEnvelope.request.intent.name === "AMAZON.HelpIntent";
     },
     handle(handlerInput) {
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
@@ -81,8 +81,8 @@ const HelpIntentHandler = {
 
 const FallbackHandler = {
     canHandle(handlerInput) {
-        return (handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent')
+        return (handlerInput.requestEnvelope.request.type === "IntentRequest"
+            && handlerInput.requestEnvelope.request.intent.name === "AMAZON.FallbackIntent")
             || true
     },
     handle(handlerInput) {

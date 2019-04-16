@@ -1,10 +1,12 @@
+/** WIP */
+
 const helper = require("../services/helperFunctions.js");
 const summoningData = require("../resources/summoningData.json").spells
 
 const SummoningIntentHandler = {
     canHandle(handlerInput) {
-        return (handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-            handlerInput.requestEnvelope.request.intent.name === 'SummoningIntent');
+        return (handlerInput.requestEnvelope.request.type === "IntentRequest" &&
+            handlerInput.requestEnvelope.request.intent.name === "SummoningIntent");
     },
     handle(handlerInput) {
         let speechText;

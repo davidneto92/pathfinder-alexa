@@ -62,7 +62,7 @@ function returnSpellDetailSpeech(spell, spellDetailSlot, requestAttributes) {
         // loop through this array and insert into text
     }
 
-    return { "speechText": speechText, "reprompt": reprompt };
+    return { speechText, reprompt };
 };
 
 // logic in case the short description is malformed/non-existent

@@ -5,3 +5,4 @@ node_modules/
 alexaSkill/.ask/config
 output_spells/
 .nyc_output/
+archive/

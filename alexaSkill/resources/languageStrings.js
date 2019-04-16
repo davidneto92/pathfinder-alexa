@@ -1,15 +1,12 @@
-"use strict";
-
 // <break time="3s"/>
-
 module.exports = {
     "en": {
         "translation": {
             "WELCOME": "Welcome to the Pathfinder Spell companion. I can provide information on the many arcane abilities found throughout Golarion.",
             "WELCOME_REPROMPT": "What spell would you like to hear about?",
-            // "WELCOME_RETURN_USER": "Welcome to the Pathfinder Spell companion. I can provide information on the many arcane abilities found throughout Golarion.",
+            // "WELCOME_RETURN_USER": "Welcome back to the Pathfinder Spell companion.",
             "HELP": "This skill can give players information on the magical spells used throughout the Pathfinder role playing game. You can first find a spell by saying, tell me about, followed by the spell name. What can I tell you about?",
-            "HELP_REPROMPT": "What spell are you gonna ask me about?",
+            "HELP_REPROMPT": "What spell would you like to ask about?",
             // add more closing lines
             "GOODBYE": "Come back soon when you need help with a spell!",
             "FALLBACK": "I'm not sure what you're asking about.",
@@ -35,9 +32,11 @@ module.exports = {
                 "What can I tell you about {{spellName}}?",
                 "What are you looking for on {{spellName}}",
             ],
-            "DETAIL_ELICIT_REPROMPT": "I can tell you about a few other features of {{spellName}}, such as x y z. What would you like to know about this spell?",
+            "DETAIL_ELICIT_REPROMPT": "I can provide a more information on {{spellName}}, such as its range or a full rule description. What would you like to know about this spell?",
+            "DETAIL_DONT_KNOW": "",
+            "DETAIL_DONT_KNOW_REPROMPT": "",
             "DETAIL_FOUND_NOTHING": "Okay then, come back soon when you need help with a spell!",
-            // "DETAIL_FOUND_HEADER": "",
+            // "DETAIL_FOUND_HEADER": [],
             "DETAIL_FOUND_RANGE": "The range of {{spellName}} is: {{spellRange}}",
             "DETAIL_FOUND_RANGE_REPROMPT": "The range is: {{spellRange}}",
             "DETAIL_FOUND_CASTING_TIME": "The casting time for {{spellName}} is: {{spellCastingTime}}",
@@ -56,15 +55,14 @@ module.exports = {
             "DETAIL_FOUND_SPELL_REQUIREMENTS_TWO" : "{{spellName}} has a {{componentList}} component.",
             "DETAIL_FOUND_SPELL_REQUIREMENTS_MORE": "{{spellName}} has {{componentList}} components.",
 
-
-            "DETAIL_FOUND_FOLLOW_UP": [
-                "What else did you want to know about {{spellName}}?",
-                "What else do you want to know?",
-                "What else can I tell you about {{spellName}}?",
-                "What other details would you like to hear?"
-            ],
-            "DETAIL_FOUND_FOLLOW_UP_REPROMPT": "you can ask for other details such as x y z. what do you want?",
-            "DETAIL_NO_SPELL_IN_SESSION": "Before I can tell you specific spell details, you need to provide a spell.",
+            // "DETAIL_FOUND_FOLLOW_UP": [
+            //     "What else did you want to know about {{spellName}}?",
+            //     "What else do you want to know?",
+            //     "What else can I tell you about {{spellName}}?",
+            //     "What other details would you like to hear?"
+            // ],
+            // "DETAIL_FOUND_FOLLOW_UP_REPROMPT": "you can ask for other details such as x y z. what do you want?",
+            // "DETAIL_NO_SPELL_IN_SESSION": "Before I can tell you specific spell details, you need to provide a spell.",
             // "DETAIL_NO_SPELL_IN_SESSION_REPROMPT": "",
             // "DETAIL_NOT_FOUND": "that's not something you can ask for!" ????
 

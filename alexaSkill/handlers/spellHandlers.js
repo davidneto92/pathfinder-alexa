@@ -1,8 +1,8 @@
-var AWS = require('aws-sdk');
+var AWS = require("aws-sdk");
 const _ = require("lodash");
-const helper = require('../services/helperFunctions.js');
+const helper = require("../services/helperFunctions.js");
 
-AWS.config.update({region: 'us-east-1'});
+AWS.config.update({region: "us-east-1"});
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 const SpellIntentHandler = {
@@ -15,7 +15,7 @@ const SpellIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const updatedIntent = handlerInput.requestEnvelope.request.intent;
 
-        if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)) { // if user provides a spell slot value, query it
+        if (helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell)) {
             const slot = helper.slotValue(handlerInput.requestEnvelope.request.intent.slots.spell);
             return new Promise((resolve) => {
                 params = {
@@ -30,7 +30,6 @@ const SpellIntentHandler = {
                         console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
                     } else {
                         if (data.Item) {
-                            console.log(`here is the saving throw type: ${data.Item.saving_throw}`)
                             sessionAttributes.currentSpell = data.Item;
                             handlerInput.attributesManager.setSessionAttributes(sessionAttributes)
 
@@ -74,7 +73,7 @@ const SpellIntentHandler = {
                 });
 
             });
-        } else { // user did not provide spell slot value
+        } else {
             const speechText = _.sample(requestAttributes.t("SPELL_ELICIT"));
             const reprompt = requestAttributes.t("SPELL_NOT_FOUND_REPROMPT");
             return handlerInput.responseBuilder
@@ -86,7 +85,6 @@ const SpellIntentHandler = {
     }
 };
 
-// need to handle asking for spell and detail
 const SpellDetailsIntentHandler = {
     canHandle(handlerInput) {
         return (handlerInput.requestEnvelope.request.type === "IntentRequest" &&
@@ -108,14 +106,12 @@ const SpellDetailsIntentHandler = {
                         .speak(requestAttributes.t("DETAIL_FOUND_NOTHING"))
                         .withShouldEndSession(true)
                         .getResponse();
-                } else if (spellDetail === "don't know") {
+                } else if (spellDetail === "don"t know") {
                     delete handlerInput.requestEnvelope.request.intent.slots.spellDetail.resolutions
                     updatedIntent = handlerInput.requestEnvelope.request.intent;
                     return handlerInput.responseBuilder
-                        // .speak(requestAttributes.t("i deleted the slot. ask for another one"))
-                        // .reprompt(requestAttributes.t("i deleted the slot. ask for another one"))
-                        .speak(requestAttributes.t(need to write this speech))
-                        .reprompt(requestAttributes.t(need to write this speech))
+                        .speak(requestAttributes.t("DETAIL_DONT_KNOW"))
+                        .reprompt(requestAttributes.t("DETAIL_DONT_KNOW_REPROMPT"))
                         .addElicitSlotDirective("spellDetail", updatedIntent)
                         .getResponse();                    
                 } else {

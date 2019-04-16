@@ -1,14 +1,13 @@
-# FOR LIVE DYNAMODB
-
 # parse CSV, load all data
-require "aws-sdk"
+require 'dotenv/load'
+require "aws-sdk-dynamodb"
 require "smarter_csv"
 
 Aws.config.update({
   region: "us-east-1",
 })
 
-table_name = 'pathfinderSpellsTable'
+table_name = ENV['TABLE_NAME']
 dynamodb = Aws::DynamoDB::Client.new
 
 
@@ -24,14 +23,14 @@ def boolean_check(value)
 end
 
 def null_check(value)
-  value.present? && value != 'NULL'
+  value.present? && value != "NULL"
 end
 
 def sanitize_speech(string)
   string.gsub("&", "and").gsub("&#8224", "")
 end
 
-csv_spells = SmarterCSV.process('./input/spell_list.csv')
+csv_spells = SmarterCSV.process("./input/spell_list.csv")
 puts "#{csv_spells.length} spells to be parsed"
 
 csv_spells.each_with_index do |spell_data, index|
