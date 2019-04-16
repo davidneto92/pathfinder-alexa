@@ -106,7 +106,7 @@ const SpellDetailsIntentHandler = {
                         .speak(requestAttributes.t("DETAIL_FOUND_NOTHING"))
                         .withShouldEndSession(true)
                         .getResponse();
-                } else if (spellDetail === "don"t know") {
+                } else if (spellDetail === "don't know") {
                     delete handlerInput.requestEnvelope.request.intent.slots.spellDetail.resolutions
                     updatedIntent = handlerInput.requestEnvelope.request.intent;
                     return handlerInput.responseBuilder
