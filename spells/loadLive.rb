@@ -1,5 +1,5 @@
 # parse CSV, load all data
-require 'dotenv/load'
+require "dotenv/load"
 require "aws-sdk-dynamodb"
 require "smarter_csv"
 
@@ -7,7 +7,7 @@ Aws.config.update({
   region: "us-east-1",
 })
 
-table_name = ENV['TABLE_NAME']
+table_name = ENV["TABLE_NAME"]
 dynamodb = Aws::DynamoDB::Client.new
 
 
@@ -55,32 +55,32 @@ all_spells << {
     material: boolean_check(spell_data[:material]),
     focus:    boolean_check(spell_data[:focus])
   },
-  spell_levels: {
-    alchemist: spell_data[:alchemist],
-    antipaladin: spell_data[:antipaladin],
-    bard: spell_data[:bard],
-    bloodrager: spell_data[:bloodrager],
-    cleric: spell_data[:cleric],
-    druid: spell_data[:druid],
-    hunter: spell_data[:hunter],
-    inquisitor: spell_data[:inquisitor],
-    investigator: spell_data[:investigator],
-    magus: spell_data[:magus],
-    medium: spell_data[:medium],
-    mesmerist: spell_data[:mesmerist],
-    occultist: spell_data[:occultist],
-    oracle: spell_data[:oracle],
-    paladin: spell_data[:paladin],
-    psychic: spell_data[:psychic],
-    ranger: spell_data[:ranger],
-    shaman: spell_data[:shaman],
-    skald: spell_data[:skald],
-    sorcerer: spell_data[:sor],
-    spiritualist: spell_data[:spiritualist],
-    summoner: spell_data[:summoner],
-    witch: spell_data[:witch],
-    wizard: spell_data[:wiz]
-  }
+  spell_levels: [
+    {class: "alchemist", level: spell_data[:alchemist]},
+    {class: "antipaladin", level: spell_data[:antipaladin]},
+    {class: "bard", level: spell_data[:bard]},
+    {class: "bloodrager", level: spell_data[:bloodrager]},
+    {class: "cleric", level: spell_data[:cleric]},
+    {class: "druid", level: spell_data[:druid]},
+    {class: "hunter", level: spell_data[:hunter]},
+    {class: "inquisitor", level: spell_data[:inquisitor]},
+    {class: "investigator", level: spell_data[:investigator]},
+    {class: "magus", level: spell_data[:magus]},
+    {class: "medium", level: spell_data[:medium]},
+    {class: "mesmerist", level: spell_data[:mesmerist]},
+    {class: "occultist", level: spell_data[:occultist]},
+    {class: "oracle", level: spell_data[:oracle]},
+    {class: "paladin", level: spell_data[:paladin]},
+    {class: "psychic", level: spell_data[:psychic]},
+    {class: "ranger", level: spell_data[:ranger]},
+    {class: "shaman", level: spell_data[:shaman]},
+    {class: "skald", level: spell_data[:skald]},
+    {class: "sorcerer", level: spell_data[:sor]},
+    {class: "spiritualist", level: spell_data[:spiritualist]},
+    {class: "summoner", level: spell_data[:summoner]},
+    {class: "witch", level: spell_data[:witch]},
+    {class: "wizard", level: spell_data[:wiz]}
+  ]
 }
 end
 

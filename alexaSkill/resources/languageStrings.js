@@ -33,9 +33,9 @@ module.exports = {
                 "What are you looking for on {{spellName}}",
             ],
             "DETAIL_ELICIT_REPROMPT": "I can provide a more information on {{spellName}}, such as its range or a full rule description. What would you like to know about this spell?",
-            "DETAIL_DONT_KNOW": "",
-            "DETAIL_DONT_KNOW_REPROMPT": "",
-            "DETAIL_FOUND_NOTHING": "Okay then, come back soon when you need help with a spell!",
+            "DETAIL_DONT_KNOW": "You can ask me for common properties of this spell, such as its range, saving throw, or the spell components. {{footer}}",
+            // "DETAIL_DONT_KNOW_REPROMPT": "",
+            "DETAIL_FOUND_NOTHING": "Okay, come back soon when you need help with a spell!",
             // "DETAIL_FOUND_HEADER": [],
             "DETAIL_FOUND_RANGE": "The range of {{spellName}} is: {{spellRange}}",
             "DETAIL_FOUND_RANGE_REPROMPT": "The range is: {{spellRange}}",
@@ -51,9 +51,7 @@ module.exports = {
             "DETAIL_FOUND_FULL_DESCRIPTION_REPROMPT": "To hear the full text of {{spellName}} again, ask me for the full description.",
             "DETAIL_FOUND_SCHOOL": "The spell {{spellName}} belongs to the {{spellSchool}} school.",
             "DETAIL_FOUND_SCHOOL_REPROMPT": "{{spellName}} is as {{spellSchool}} spell.",
-            "DETAIL_FOUND_SPELL_REQUIREMENTS_ONE" : "{{spellName}} has only a {{componentList}} component.",
-            "DETAIL_FOUND_SPELL_REQUIREMENTS_TWO" : "{{spellName}} has a {{componentList}} component.",
-            "DETAIL_FOUND_SPELL_REQUIREMENTS_MORE": "{{spellName}} has {{componentList}} components.",
+            "DETAIL_FOUND_SPELL_REQUIREMENTS" : "{{spellName}} {{onlyOne}} has a {{componentList}} component.",
 
             // "DETAIL_FOUND_FOLLOW_UP": [
             //     "What else did you want to know about {{spellName}}?",

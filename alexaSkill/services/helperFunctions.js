@@ -1,10 +1,10 @@
-const _ = require("lodash");
+const _ = require("lodash")
 
 function slotValue(intentWithSlot) {
     if (intentWithSlot.resolutions && intentWithSlot.resolutions.resolutionsPerAuthority[0].values) {
         return intentWithSlot.resolutions.resolutionsPerAuthority[0].values[0].value.name
     } else if (intentWithSlot.value) {
-        if (intentWithSlot.value === '') {
+        if (intentWithSlot.value === "") {
             return false
         } else {
             return intentWithSlot.value
@@ -14,8 +14,8 @@ function slotValue(intentWithSlot) {
     }
 };
 
-function getSlotIdByName(slotName, intent) {
-    if (intent.slots[slotName].value === '') {
+function slotId(slotName, intent) {
+    if (intent.slots[slotName].value === "") {
         return false
     } else {
         return intent.slots[slotName].resolutions.resolutionsPerAuthority[0].values[0].value.id
@@ -53,13 +53,20 @@ function returnSpellDetailSpeech(spell, spellDetailSlot, requestAttributes) {
         speechText = requestAttributes.t("DETAIL_FOUND_FULL_DESCRIPTION", {spellName: spell.name, spellDescription: spell.description})
         reprompt = requestAttributes.t("DETAIL_FOUND_FULL_DESCRIPTION_REPROMPT", {spellName: spell.name})
     } else if (spellDetailSlot === "levels") {
-
+        generateSpellLevelSpeech(spell.spell_levels)
+        // generate the list speech, then sprintf it
     } else if (spellDetailSlot === "school") {
         speechText = requestAttributes.t("DETAIL_FOUND_SCHOOL", {spellName: spell.name, spellSchool: spell.school})
         reprompt = requestAttributes.t("DETAIL_FOUND_SCHOOL_REPROMPT", {spellName: spell.name, spellSchool: spell.school})
     } else if (spellDetailSlot === "components") {
-        const requirementsList = generateSpellRequirements(spell.spell_requirements)
-        // loop through this array and insert into text
+        const reqList = _.without( _.map(spellRequirements, (requirement, category) => { if (requirement) return category } ), undefined)
+        let listSpeech = generateList(reqList)
+        speechText = requestAttributes.t("DETAIL_FOUND_SPELL_REQUIREMENTS", {
+            spellName: spell.name,
+            onlyOne: reqList.length === 1 ? "only" : "",
+            componentList: listSpeech
+        })
+        reprompt = speechText
     }
 
     return { speechText, reprompt };
@@ -72,35 +79,55 @@ function getSpellDescriptionShort(spell) {
 
 // reads through the spell_levels object to generate output for which classes & levels may cast a spell
 function generateSpellLevelSpeech(spell) {
-
+    // _.sortBy()
+    // spells now are using an array of {class: "bard", level: 2 } objects
+    // use similar logic to comp list to pull out items with level === "NULL"
 };
 
-// reads through the spell_requirements object to generate array of components strings
-function generateSpellRequirements(spellRequirements) {
-    return _.without( _.map(spellRequirements, (requirement, category) => { if (requirement) return category } ), undefined)
-};
-
-function checkIfSummoning(spell, requestAttributes) {
-    // check if the spell being asked about is a valid summoning spell
-    // if true, return summoning data
-        // {speechText: x spell can is summoning spell, summons: [array of possible summons]}
-    // if it's not a summoning spell, return false
-};
-
-function numeralConversion(speechText) {
-    // modifies speechOutput to be sure roman numerals are spoken correctly
-};
+// creates a string from a simple array of strings
+function generateList(arrayOfStrings) {
+    let listSpeech = ""
+    switch (arrayOfStrings.length) {
+        case 1:
+            listSpeech = arrayOfStrings[0]
+            break
+        case 2:
+            listSpeech = `${arrayOfStrings[0]} and ${arrayOfStrings[1]}`
+            break
+        default:
+            arrayOfStrings.forEach((comp, index) => {
+                if (index === arrayOfStrings.length - 1) {
+                    listSpeech += `and ${comp}`
+                } else {
+                    listSpeech += `${comp}, `
+                }
+            })
+            break
+    }
+    return listSpeech
+}
 
 // corrects Alexa's "1 min slash level" to be "1 min PER level"
 function slashCorrection(description) {
     return _.replace(description, "./level", " per level").replace("./2 levels", " per two levels").replace("./3 levels", " per three levels")
 }
 
+// check if the spell being asked about is a valid summoning spell
+// if true, return summoning data
+    // {speechText: x spell can is summoning spell, summons: [array of possible summons]}
+// if it's not a summoning spell, return false
+function checkIfSummoning(spell, requestAttributes) {}
+
+// modifies speechOutput to be sure roman numerals are spoken correctly
+function numeralConversion(speechText) {};
+
 module.exports = {
     slotValue,
+    slotId,
     returnSpellDetailSpeech,
     getSpellDescriptionShort,
-    checkIfSummoning,
-    numeralConversion,
+    generateList,
     slashCorrection
+    // checkIfSummoning,
+    // numeralConversion,
 };

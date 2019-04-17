@@ -109,9 +109,10 @@ const SpellDetailsIntentHandler = {
                 } else if (spellDetail === "don't know") {
                     delete handlerInput.requestEnvelope.request.intent.slots.spellDetail.resolutions
                     updatedIntent = handlerInput.requestEnvelope.request.intent;
+                    const footer = requestAttributes.t("SPELL_FOUND_REPROMPT", {spellName: currentSpell.name}) 
                     return handlerInput.responseBuilder
-                        .speak(requestAttributes.t("DETAIL_DONT_KNOW"))
-                        .reprompt(requestAttributes.t("DETAIL_DONT_KNOW_REPROMPT"))
+                        .speak(requestAttributes.t("DETAIL_DONT_KNOW", { footer }))
+                        .reprompt(footer)
                         .addElicitSlotDirective("spellDetail", updatedIntent)
                         .getResponse();                    
                 } else {
